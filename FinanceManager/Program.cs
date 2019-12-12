@@ -1,9 +1,4 @@
-using FinanceManager.Managers;
-using FinanceManager.Util;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinanceManager
@@ -23,14 +18,6 @@ namespace FinanceManager
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
 
-            //GlobalSettings.SaveSettings();
         }
-
-        //private static void RegisterSingltones()
-        //{
-        //    SingltonManager.RegisterSinglton<IncomeTransactionManager>();
-        //    SingltonManager.RegisterSinglton<OutcomeTransactionManager>();
-        //    SingltonManager.RegisterSinglton<StatisticResolver>();
-        //}
     }
 }

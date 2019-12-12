@@ -30,7 +30,11 @@ namespace FinanceManager.Managers
 
         public IEnumerable<Transaction> GetTransactions(DateTime from, DateTime to)
         {
-            throw new NotImplementedException();
+            return _transactions.Where(tr =>
+            {
+                return tr.Date >= from && tr.Date <= to
+;
+            });
         }
 
         public void RemoveTransaction(Transaction transaction)
