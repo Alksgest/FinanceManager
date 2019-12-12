@@ -5,7 +5,7 @@ namespace FinanceManager.Repositories
 {
     public class BrothersRepository : AbstractRepository<Brother>
     {
-        public BrothersRepository() : base("brothers.db") { }
+        public BrothersRepository() : base(@"db\brothers.db") { }
     }
 
 }

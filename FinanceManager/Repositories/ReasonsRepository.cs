@@ -6,9 +6,9 @@ using FinanceManager.Models;
 namespace FinanceManager.Repositories
 {
 
-    public class ReasonsRepository : AbstractRepository<Brother>
+    public class ReasonsRepository : AbstractRepository<String>
     {
-        public ReasonsRepository() : base("allowedReasons.db") { }
+        public ReasonsRepository() : base(@"db\allowedReasons.db") { }
     }
 
 }

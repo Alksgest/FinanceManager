@@ -11,7 +11,7 @@ namespace FinanceManager.Models
         public int Amount { get; set; }
         public Currency Currency { get; set; }
         public Brother Brother { get; set; }
-        public string Reason { get; set; }
+        public TransactionReason Reason { get; set; }
         public TransactionType Type { get; set; }
         public DateTime Date { get; set; }
         public string Comment { get; set; }
@@ -21,7 +21,8 @@ namespace FinanceManager.Models
             return $"id = {Id}\n" +
                 $"Amount = {Amount}\n" +
                     $"Currency = {Currency}\n" +
-                        $"Comment = {Comment}\n";
+                        $"Comment = {Comment}\n" +
+                            $"Reason = {Reason.Desctiption}\n";
         }
     }
 }

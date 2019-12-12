@@ -1,6 +1,4 @@
-﻿#define DEBUG
-
-using System;
+﻿using System;
 
 using FinanceManager.Models;
 
@@ -51,25 +49,5 @@ namespace FinanceManager.Managers
                     break;
             }
         }
-
-#if DEBUG
-        public void PrintAllTransactions()
-        {
-            var income = _incomeTransactionManager.GetTransactions();
-            var outcome = _outcomeTransactionManager.GetTransactions();
-
-            foreach(var t in income)
-            {
-                Console.WriteLine(t);
-            }
-
-            foreach (var t in outcome)
-            {
-                Console.WriteLine(t);
-            }
-
-        }
-#endif
-
     }
 }
