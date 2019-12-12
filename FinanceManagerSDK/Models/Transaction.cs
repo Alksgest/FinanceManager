@@ -8,12 +8,12 @@ namespace FinanceManager.Models
     public class Transaction
     {
         public int Id { get; set; }
-        public int Amount { get; set; }
+        public Decimal Amount { get; set; }
         public Currency Currency { get; set; }
         public Brother Brother { get; set; }
         public TransactionReason Reason { get; set; }
         public TransactionType Type { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
         public string Comment { get; set; }
 
         public override string ToString()
