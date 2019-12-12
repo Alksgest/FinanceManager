@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FinanceManagerClient.Views
 {
-    interface IMakeTransactionView : IView
+    public interface IMakeTransactionView : IView
     {
     }
 }

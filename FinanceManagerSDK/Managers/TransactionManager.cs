@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections;
 using FinanceManager.Models;
 
 namespace FinanceManager.Managers
@@ -24,6 +24,16 @@ namespace FinanceManager.Managers
         {
             _incomeTransactionManager = itm;
             _outcomeTransactionManager = otm;
+        }
+
+        public IEnumerable GetIncomeTransactions()
+        {
+            return _incomeTransactionManager.GetTransactions();
+        }
+
+        public IEnumerable GetOutcomeTransactions()
+        {
+            return _outcomeTransactionManager.GetTransactions();
         }
 
         public void MakeTransaction(Transaction transaction)

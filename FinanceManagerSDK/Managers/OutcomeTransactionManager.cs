@@ -9,32 +9,21 @@ namespace FinanceManager.Managers
 {
     public class OutcomeTransactionManager : ITransactionManager
     {
-        private readonly List<Transaction> _transactions;
         private readonly IRepository<Transaction> _repository;
 
         public OutcomeTransactionManager()
         {
             _repository = new TransactionsRepository();
-            _transactions = _repository.GetObjects().Where(t => t.Type == TransactionType.Outcome).ToList();
         }
 
         public void AddTransaction(Transaction transaction)
         {
-            _transactions.Add(transaction);
             _repository.AddObject(transaction);
         }
 
         public IEnumerable<Transaction> GetTransactions()
         {
-            return _transactions;
-        }
-
-        public IEnumerable<Transaction> GetTransactions(DateTime from, DateTime to)
-        {
-            return _transactions.Where(tr =>
-            {
-                return tr.Date >= from && tr.Date <= to
-;            });
+            return _repository.GetObjects().Where(t => t.Type == TransactionType.Outcome);
         }
 
         public void RemoveTransaction(Transaction transaction)

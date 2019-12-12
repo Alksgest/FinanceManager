@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FinanceManager
+namespace FinanceManagerClient
 {
     public partial class MainForm : Form
     {
@@ -17,5 +17,9 @@ namespace FinanceManager
             InitializeComponent();
         }
 
+        private void MakeTransactionButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
