@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿#define DEBUG
+
+using System;
 
 using FinanceManager.Models;
-using FinanceManager.Util;
 
 namespace FinanceManager.Managers
 {
-    class TransactionsManager
+    class TransactionManager
     {
         private readonly ITransactionManager _incomeTransactionManager;
         private readonly ITransactionManager _outcomeTransactionManager;
@@ -15,22 +14,18 @@ namespace FinanceManager.Managers
         public event Action<TransactionEventArgs> TransactionStarted;
         public event Action<TransactionEventArgs> TransactionDone; // args should be changed
 
-        private readonly IRepository _repository;
 
-        public TransactionsManager()
+        public TransactionManager()
         {
             _incomeTransactionManager = new IncomeTransactionManager();
             _outcomeTransactionManager = new OutcomeTransactionManager();
 
-            _repository = new Repository();
         }
 
-        public TransactionsManager(ITransactionManager itm, ITransactionManager otm)
+        public TransactionManager(ITransactionManager itm, ITransactionManager otm)
         {
             _incomeTransactionManager = itm;
             _outcomeTransactionManager = otm;
-
-            _repository = new Repository();
         }
 
         public void MakeTransaction(Transaction transaction)
@@ -57,15 +52,24 @@ namespace FinanceManager.Managers
             }
         }
 
-        public void SaveTransactions()
+#if DEBUG
+        public void PrintAllTransactions()
         {
-            // should save transactions to local storage
-        }
+            var income = _incomeTransactionManager.GetTransactions();
+            var outcome = _outcomeTransactionManager.GetTransactions();
 
-        public void LoadTransactions()
-        {
-            // should load transactions from local storage
+            foreach(var t in income)
+            {
+                Console.WriteLine(t);
+            }
+
+            foreach (var t in outcome)
+            {
+                Console.WriteLine(t);
+            }
+
         }
+#endif
 
     }
 }

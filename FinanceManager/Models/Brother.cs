@@ -13,6 +13,7 @@ namespace FinanceManager.Models
     [Serializable]
     public class Brother
     {
+        public int Id { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public Account Account { get; set; }
