@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FinanceManager.Statistic
+namespace FinanceManagerSDK.Statistic
 {
     public interface IReportBuilder
     {

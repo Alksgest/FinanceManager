@@ -1,4 +1,4 @@
-﻿namespace FinanceManager.Models
+﻿namespace FinanceManagerSDK.Models
 {
     public enum Currency
     {

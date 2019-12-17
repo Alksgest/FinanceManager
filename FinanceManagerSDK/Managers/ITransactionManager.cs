@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using FinanceManager.Models;
+using FinanceManagerSDK.Models;
 
-namespace FinanceManager.Managers
+namespace FinanceManagerSDK.Managers
 {
     public interface ITransactionManager
     {

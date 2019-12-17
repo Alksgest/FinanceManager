@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FinanceManager.Models
+namespace FinanceManagerSDK.Models
 {
     public class TransactionReason
     {

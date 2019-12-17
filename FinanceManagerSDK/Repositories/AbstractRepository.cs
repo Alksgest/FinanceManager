@@ -1,10 +1,13 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using System.Collections.Generic;
+
 using LiteDB;
 
-namespace FinanceManager.Repositories
+namespace FinanceManagerSDK.Repositories
 {
-    public abstract class AbstractRepository<T> : IRepository<T>
+    public abstract class AbstractRepository<T>
     {
         private readonly String _dbString;
         private readonly LiteDatabase _db;
@@ -13,14 +16,29 @@ namespace FinanceManager.Repositories
         {
             _dbString = dbString;
             _db = new LiteDatabase(_dbString);
+
+            CreateSubFolder();
         }
 
-        public IEnumerable<T> GetObjects()
+        private void CreateSubFolder()
+        {
+            var splited = _dbString.Split('\\');
+            var folder = splited.Length > 1 ? String.Join("", splited.Take(splited.Length - 1)) : "";
+
+            var fullPath = Directory.GetCurrentDirectory() + @"\" + folder;
+
+            if(!Directory.Exists(fullPath))
+            {
+                Directory.CreateDirectory(fullPath);
+            }
+        }
+
+        protected IEnumerable<T> GetObjects()
         {
             return _db.GetCollection<T>().FindAll();
         }
 
-        public void AddObject(T obj)
+        protected void AddObject(T obj)
         {
             var collection = _db.GetCollection<T>();
 
@@ -33,7 +51,7 @@ namespace FinanceManager.Repositories
 
         }
 
-        public void UpdateObject(T obj)
+        protected void UpdateObject(T obj)
         {
             var collection = _db.GetCollection<T>();
 

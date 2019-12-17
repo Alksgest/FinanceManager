@@ -39,7 +39,7 @@
             this.MakeTransactionButton.TabIndex = 0;
             this.MakeTransactionButton.Text = "MakeTransaction";
             this.MakeTransactionButton.UseVisualStyleBackColor = true;
-            this.MakeTransactionButton.Click += new System.EventHandler(this.MakeTransactionButton_Click);
+            this.MakeTransactionButton.Click += new System.EventHandler(this.MakeTransactionButtonClick);
             // 
             // MainForm
             // 

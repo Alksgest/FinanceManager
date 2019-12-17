@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections;
-using FinanceManager.Models;
+using FinanceManagerSDK.Models;
 
-namespace FinanceManager.Managers
+namespace FinanceManagerSDK.Managers
 {
     class TransactionManager
     {

@@ -46,9 +46,11 @@
   <ItemGroup>
     <Compile Include="Managers\IncomeTransactionManager.cs" />
     <Compile Include="Managers\ITransactionManager.cs" />
+    <Compile Include="Managers\IUserManager.cs" />
     <Compile Include="Managers\OutcomeTransactionManager.cs" />
     <Compile Include="Managers\TransactionManager.cs" />
-    <Compile Include="Models\Brother.cs" />
+    <Compile Include="Managers\UserManager.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\TransactionEventArgs.cs" />
@@ -56,10 +58,12 @@
     <Compile Include="Models\TransactionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AbstractRepository.cs" />
-    <Compile Include="Repositories\BrothersRepository.cs" />
+    <Compile Include="Repositories\ITransactionRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Repositories\ReasonsRepository.cs" />
-    <Compile Include="Repositories\TransactionsRepository.cs" />
+    <Compile Include="Repositories\ReasonRepository.cs" />
+    <Compile Include="Repositories\TransactionRepository.cs" />
     <Compile Include="Statistic\ReportBuilder.cs" />
   </ItemGroup>
   <ItemGroup>

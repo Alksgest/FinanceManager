@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace FinanceManager.Repositories
+namespace FinanceManagerSDK.Repositories
 {
-    public interface IRepository<T>
+    public interface ITransactionRepository<T>
     {
         IEnumerable<T> GetObjects();
 

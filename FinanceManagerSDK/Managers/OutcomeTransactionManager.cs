@@ -2,28 +2,28 @@
 using System.Linq;
 using System.Collections.Generic;
 
-using FinanceManager.Models;
-using FinanceManager.Repositories;
+using FinanceManagerSDK.Models;
+using FinanceManagerSDK.Repositories;
 
-namespace FinanceManager.Managers
+namespace FinanceManagerSDK.Managers
 {
     public class OutcomeTransactionManager : ITransactionManager
     {
-        private readonly IRepository<Transaction> _repository;
+        private readonly ITransactionRepository _repository;
 
         public OutcomeTransactionManager()
         {
-            _repository = new TransactionsRepository();
+            _repository = new TransactionRepository();
         }
 
         public void AddTransaction(Transaction transaction)
         {
-            _repository.AddObject(transaction);
+            _repository.AddTransaction(transaction);
         }
 
         public IEnumerable<Transaction> GetTransactions()
         {
-            return _repository.GetObjects().Where(t => t.Type == TransactionType.Outcome);
+            return _repository.GetTransactions().Where(t => t.Type == TransactionType.Outcome);
         }
 
         public void RemoveTransaction(Transaction transaction)

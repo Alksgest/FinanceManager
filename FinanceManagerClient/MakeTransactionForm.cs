@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FinanceManager.Models;
+
+using FinanceManagerSDK.Models;
+
 using FinanceManagerClient.Presenters;
 using FinanceManagerClient.Views;
 
@@ -20,11 +22,11 @@ namespace FinanceManagerClient
 
         private readonly MakeTransactionPresenter _presenter;
 
-        public MakeTransactionForm()
+        public MakeTransactionForm(User currentUser)
         {
             InitializeComponent();
 
-            _presenter = new MakeTransactionPresenter(this);
+            _presenter = new MakeTransactionPresenter(this, currentUser);
 
             InvokeInitialize(new EventArgs());
         }
@@ -46,13 +48,15 @@ namespace FinanceManagerClient
             Transaction tr = new Transaction
             {
                 Amount = AmountNumericUpDown.Value,
-                Brother = BrotherComboBox.SelectedItem as Brother,
+                TransactionOwner = BrotherComboBox.SelectedItem as User,
                 Comment = CommentTextBox.Text,
-                Currency = Currency.,
+                Currency = Currency.UAH, //mock
                 Date = DateTimePicker.Value,
                 Reason = ReasonComboBox.SelectedItem as TransactionReason,
-                Type =
+                Type = TransactionType.Income // mock
             };
+
+            return tr;
         }
 
         private void ResetForm()

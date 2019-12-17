@@ -124,9 +124,9 @@
             this.BrotherLabel.AutoSize = true;
             this.BrotherLabel.Location = new System.Drawing.Point(12, 88);
             this.BrotherLabel.Name = "BrotherLabel";
-            this.BrotherLabel.Size = new System.Drawing.Size(41, 13);
+            this.BrotherLabel.Size = new System.Drawing.Size(94, 13);
             this.BrotherLabel.TabIndex = 9;
-            this.BrotherLabel.Text = "Brother";
+            this.BrotherLabel.Text = "TransactionOwner";
             // 
             // ReasonLabel
             // 

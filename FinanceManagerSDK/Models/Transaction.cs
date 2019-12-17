@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FinanceManager.Models
+namespace FinanceManagerSDK.Models
 {
     [Serializable]
     public class Transaction
@@ -10,7 +10,8 @@ namespace FinanceManager.Models
         public int Id { get; set; }
         public Decimal Amount { get; set; }
         public Currency Currency { get; set; }
-        public Brother Brother { get; set; }
+        public User TransactionOwner { get; set; }
+        public User TransactionMaker { get; set; }
         public TransactionReason Reason { get; set; }
         public TransactionType Type { get; set; }
         public DateTime? Date { get; set; }
