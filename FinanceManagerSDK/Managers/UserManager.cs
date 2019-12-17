@@ -30,5 +30,11 @@ namespace FinanceManagerSDK.Managers
             var user = _repo.GetUsers().SingleOrDefault(u => u.Lastname == lastname && u.Degree == degree);
             return user != null;
         }
+
+        public IEnumerable<User> GetUsers()
+        {
+            var s = _repo.GetUsers(); 
+            return _repo.GetUsers();
+        }
     }
 }

@@ -52,13 +52,14 @@ namespace FinanceManagerClient
 
         private void LoginButtonClick(object sender, EventArgs e)
         {
+            var degree = (Degree)DegreeComboBox.SelectedItem;
             Login(this, new LoginEventArgs
             {
-                Degree = Degree.First,
-                Lastname = "sus"
+                Degree = degree,
+                Lastname = NameTextBox.Text
             });
         }
-
+    
         private void InitControls()
         {
             object[] values = { "", Degree.First, Degree.Second, Degree.Third };

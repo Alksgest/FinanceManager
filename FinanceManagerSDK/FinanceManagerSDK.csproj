@@ -50,6 +50,8 @@
     <Compile Include="Managers\OutcomeTransactionManager.cs" />
     <Compile Include="Managers\TransactionManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\Transaction.cs" />

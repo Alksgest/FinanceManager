@@ -42,9 +42,9 @@ namespace FinanceManagerSDK.Repositories
         {
             var collection = _db.GetCollection<T>();
 
-            var res = collection.Find(o => o.Equals(obj));
+            var contain = collection.FindAll().Contains(obj);
 
-            if(res == null)
+            if(!contain)
             {
                 collection.Insert(obj);
             }

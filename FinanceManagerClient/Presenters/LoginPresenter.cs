@@ -32,15 +32,20 @@ namespace FinanceManagerClient.Presenters
 
         private void OnLogin(object sender, LoginEventArgs args)
         {
-            try
+            if (_manager.UserExists(args.Lastname, args.Degree))
             {
-                if (_manager.UserExists(args.Lastname, args.Degree))
+                LoginDone?.Invoke(this, new EventArgs());
+
+                CurrentUser = _manager.GetUser(args.Lastname, args.Degree);
+
+                CreateMainForm();
+            }
+            else
+            {
+                int count = _manager.GetUsers().Count();
+                if (count == 0)
                 {
-                    LoginDone?.Invoke(this, new EventArgs());
-
-                    CurrentUser = _manager.GetUser(args.Lastname, args.Degree);
-
-                    CreateMainForm();
+                    CreateFirstUser(args);
                 }
                 else
                 {
@@ -48,21 +53,20 @@ namespace FinanceManagerClient.Presenters
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (DirectoryNotFoundException)
-            {
-                CreateFirstUser(args);
-            }
         }
 
         private void CreateFirstUser(EventArgs args)
         {
             NoUsersDetected?.Invoke(this, args);
-            var res = MessageBox.Show("There are no users now, do you want to create new one?", "No users yeat",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            var res = MessageBox.Show("There are no users now, do you want to create new one?", 
+                "No users yet",  MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-            if(res ==  DialogResult.Yes)
+            if (res == DialogResult.Yes)
             {
-                // create new User
+                using (var form = new CreateUserForm())
+                {
+                    form.ShowDialog();
+                }
             }
             else
             {
@@ -79,7 +83,6 @@ namespace FinanceManagerClient.Presenters
         }
 
         protected override void OnViewInitialize(object sender, EventArgs e) => base.OnViewInitialize(sender, e);
-
         protected override void OnViewLoad(object sender, EventArgs e) => base.OnViewLoad(sender, e);
     }
 }

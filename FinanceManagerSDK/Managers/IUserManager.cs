@@ -7,7 +7,7 @@ namespace FinanceManagerSDK.Managers
 {
     public interface IUserManager
     {
-        IEnumerable<User> Users { get; }
+        IEnumerable<User> GetUsers();
 
         bool UserExists(String surname, Degree degree);
         void AddUser(User user);
