@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using FinanceManagerClient.Views;
+﻿using FinanceManagerClient.Views;
 
 using FinanceManagerSDK.Models;
 using FinanceManagerSDK.Repositories;

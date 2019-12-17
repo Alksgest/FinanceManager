@@ -11,6 +11,6 @@ namespace FinanceManagerSDK.Managers
 
         bool UserExists(String surname, Degree degree);
         void AddUser(User user);
-        User GetUser(string lastname, Degree degree);
+        User GetUser(String lastname, Degree degree);
     }
 }

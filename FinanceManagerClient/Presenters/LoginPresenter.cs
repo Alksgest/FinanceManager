@@ -23,8 +23,8 @@ namespace FinanceManagerClient.Presenters
         public LoginPresenter(ILoginView view) : base(view)
         {
             _manager = new UserManager();
-            this.View.Login += OnLogin;
 
+            this.View.Login += OnLogin;
         }
 
         private void OnLogin(object sender, LoginEventArgs args)
@@ -84,7 +84,7 @@ namespace FinanceManagerClient.Presenters
             }
         }
 
-        protected override void OnViewInitialize(object sender, EventArgs e) => base.OnViewInitialize(sender, e);
-
+        protected override void OnViewInitialize(object sender, EventArgs e) 
+            => base.OnViewInitialize(sender, e);
     }
 }

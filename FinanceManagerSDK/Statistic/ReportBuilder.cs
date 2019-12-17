@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FinanceManagerSDK.Statistic
+﻿namespace FinanceManagerSDK.Statistic
 {
     public interface IReportBuilder
     {

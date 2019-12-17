@@ -8,7 +8,6 @@ namespace FinanceManagerSDK.Managers
 {
     public class UserManager : IUserManager
     {
-
         private readonly IUserRepository _repo;
 
         public UserManager()
@@ -33,7 +32,6 @@ namespace FinanceManagerSDK.Managers
 
         public IEnumerable<User> GetUsers()
         {
-            var s = _repo.GetUsers(); 
             return _repo.GetUsers();
         }
     }

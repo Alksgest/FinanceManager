@@ -1,17 +1,14 @@
-﻿using FinanceManagerSDK.Models;
+﻿using System;
+
+using FinanceManagerSDK.Models;
 using FinanceManagerSDK.Repositories;
+
 using FinanceManagerClient.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinanceManagerClient.Presenters
 {
     public class MakeTransactionPresenter : Presenter<IMakeTransactionView>
     {
-
         private readonly ITransactionRepository _repo = new TransactionRepository();
         private readonly User CurrentUser;
 

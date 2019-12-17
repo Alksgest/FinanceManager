@@ -1,7 +1,6 @@
-﻿using FinanceManagerSDK.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+
+using FinanceManagerSDK.Models;
 
 namespace FinanceManagerClient.Views
 {
