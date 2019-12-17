@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using FinanceManagerClient.Args;
@@ -34,10 +27,7 @@ namespace FinanceManagerClient
             _presenter.ClosingFormInvoked += OnClosingFormInvoked;
         }
 
-        private void OnClosingFormInvoked(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void OnClosingFormInvoked(object sender, EventArgs e) => this.Close();
 
         public void InvokeInitialize(EventArgs e)
         {

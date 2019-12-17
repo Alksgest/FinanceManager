@@ -12,7 +12,6 @@ namespace FinanceManagerSDK.Repositories
 
         public IEnumerable<User> GetUsers()
         {
-            var s = this.GetObjects().ToList(); 
             return this.GetObjects();
         }
 

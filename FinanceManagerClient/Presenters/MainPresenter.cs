@@ -18,7 +18,16 @@ namespace FinanceManagerClient.Presenters
         {
             _currentUser = user;
 
-            this.View.MakeTransactionClicked += OnMakeTransactionClicked;
+            this.View.MakeTransaction += OnMakeTransactionClicked;
+            this.View.AddUser += OnAddUser;
+        }
+
+        private void OnAddUser(object sender, EventArgs e)
+        {
+            using (var form = new CreateUserForm())
+            {
+                form.ShowDialog();
+            }
         }
 
         private void OnMakeTransactionClicked(object sender, EventArgs e)

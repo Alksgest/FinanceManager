@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using FinanceManagerClient.Presenters;
@@ -44,7 +37,7 @@ namespace FinanceManagerClient
 
         private void SubmitButtonClicked(object sender, EventArgs e)
         {
-            if (Validate())
+            if (ValidateModel())
             {
                 User user = CreateUser();
 
@@ -74,7 +67,7 @@ namespace FinanceManagerClient
             return u;
         }
 
-        private bool Validate()
+        private bool ValidateModel()
         {
             var isFirstnameValid = ValidateFirstname();
             var isLastnameValid = ValidateSurname();

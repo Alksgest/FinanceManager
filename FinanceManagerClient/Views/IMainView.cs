@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using FinanceManagerSDK.Models;
 
 namespace FinanceManagerClient.Views
 {
     interface IMainView : IView
     {
-        event EventHandler MakeTransactionClicked;
+        event EventHandler MakeTransaction;
+        event EventHandler AddUser;
     }
 }

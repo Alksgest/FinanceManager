@@ -5,7 +5,7 @@ using FinanceManagerClient.Args;
 namespace FinanceManagerClient.Views
 {
 
-    interface ILoginView : IView
+    public interface ILoginView : IView
     {
         event EventHandler<LoginEventArgs> Login;
     }

@@ -179,7 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(461, 283);
+            this.ClientSize = new System.Drawing.Size(459, 281);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.MakeTrButton);
             this.Controls.Add(this.DateLabel);
@@ -195,8 +195,12 @@
             this.Controls.Add(this.CommentTextBox);
             this.Controls.Add(this.DateTimePicker);
             this.Controls.Add(this.AmountNumericUpDown);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(475, 320);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(475, 320);
             this.Name = "MakeTransactionForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MakeTransactionForm";
             ((System.ComponentModel.ISupportInitialize)(this.AmountNumericUpDown)).EndInit();
             this.ResumeLayout(false);
