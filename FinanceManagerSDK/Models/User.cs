@@ -16,5 +16,13 @@ namespace FinanceManagerSDK.Models
         {
             Account = new Account();
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is User user &&
+                   Firstname == user.Firstname &&
+                   Lastname == user.Lastname &&
+                   Degree == user.Degree;
+        }
     }
 }
