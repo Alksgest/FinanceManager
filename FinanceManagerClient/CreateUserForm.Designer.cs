@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ClearButton = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
             this.SubmitButton = new System.Windows.Forms.Button();
             this.DegreeComboBox = new System.Windows.Forms.ComboBox();
             this.FirstnameTextBox = new System.Windows.Forms.TextBox();
@@ -36,20 +36,13 @@
             this.FirstnameLabel = new System.Windows.Forms.Label();
             this.LastnameLabel = new System.Windows.Forms.Label();
             this.DegreeLabel = new System.Windows.Forms.Label();
+            this.ErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ClearButton
-            // 
-            this.ClearButton.Location = new System.Drawing.Point(12, 96);
-            this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(75, 23);
-            this.ClearButton.TabIndex = 0;
-            this.ClearButton.Text = "Clear fields";
-            this.ClearButton.UseVisualStyleBackColor = true;
             // 
             // SubmitButton
             // 
-            this.SubmitButton.Location = new System.Drawing.Point(158, 96);
+            this.SubmitButton.Location = new System.Drawing.Point(12, 130);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(75, 23);
             this.SubmitButton.TabIndex = 1;
@@ -60,7 +53,7 @@
             // DegreeComboBox
             // 
             this.DegreeComboBox.FormattingEnabled = true;
-            this.DegreeComboBox.Location = new System.Drawing.Point(118, 63);
+            this.DegreeComboBox.Location = new System.Drawing.Point(12, 103);
             this.DegreeComboBox.Name = "DegreeComboBox";
             this.DegreeComboBox.Size = new System.Drawing.Size(121, 21);
             this.DegreeComboBox.TabIndex = 2;
@@ -100,17 +93,21 @@
             // DegreeLabel
             // 
             this.DegreeLabel.AutoSize = true;
-            this.DegreeLabel.Location = new System.Drawing.Point(118, 47);
+            this.DegreeLabel.Location = new System.Drawing.Point(12, 87);
             this.DegreeLabel.Name = "DegreeLabel";
             this.DegreeLabel.Size = new System.Drawing.Size(42, 13);
             this.DegreeLabel.TabIndex = 7;
             this.DegreeLabel.Text = "Degree";
             // 
+            // ErrorProvider
+            // 
+            this.ErrorProvider.ContainerControl = this;
+            // 
             // CreateUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(244, 131);
+            this.ClientSize = new System.Drawing.Size(144, 161);
             this.Controls.Add(this.DegreeLabel);
             this.Controls.Add(this.LastnameLabel);
             this.Controls.Add(this.FirstnameLabel);
@@ -118,20 +115,19 @@
             this.Controls.Add(this.FirstnameTextBox);
             this.Controls.Add(this.DegreeComboBox);
             this.Controls.Add(this.SubmitButton);
-            this.Controls.Add(this.ClearButton);
-            this.MaximumSize = new System.Drawing.Size(260, 170);
-            this.MinimumSize = new System.Drawing.Size(260, 170);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(160, 200);
             this.Name = "CreateUserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "CreateUserForm";
+            this.Text = "Create User";
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.ComboBox DegreeComboBox;
         private System.Windows.Forms.TextBox FirstnameTextBox;
@@ -139,5 +135,6 @@
         private System.Windows.Forms.Label FirstnameLabel;
         private System.Windows.Forms.Label LastnameLabel;
         private System.Windows.Forms.Label DegreeLabel;
+        private System.Windows.Forms.ErrorProvider ErrorProvider;
     }
 }

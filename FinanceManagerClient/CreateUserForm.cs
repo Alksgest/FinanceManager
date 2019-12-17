@@ -44,11 +44,14 @@ namespace FinanceManagerClient
 
         private void SubmitButtonClicked(object sender, EventArgs e)
         {
-            User user = CreateUser();
+            if (Validate())
+            {
+                User user = CreateUser();
 
-            UserCreation(sender, user);
+                UserCreation(sender, user);
 
-            this.Close();
+                this.Close();
+            }
         }
 
         private User CreateUser()
@@ -69,6 +72,61 @@ namespace FinanceManagerClient
 
             }
             return u;
+        }
+
+        private bool Validate()
+        {
+            var isFirstnameValid = ValidateFirstname();
+            var isLastnameValid = ValidateSurname();
+            var isDegreeValid = ValidateDegree();
+
+            return isFirstnameValid && isLastnameValid && isDegreeValid;
+        }
+
+        private bool ValidateFirstname()
+        {
+            bool isValidated = true;
+            if (FirstnameTextBox.Text.Trim().Length == 0)
+            {
+                ErrorProvider.SetError(FirstnameTextBox, "Enter firstname, please.");
+                isValidated = false;
+            }
+            else
+            {
+                ErrorProvider.SetError(FirstnameTextBox, "");
+            }
+            return isValidated;
+        }
+
+        private bool ValidateSurname()
+        {
+            bool isValidated = true;
+            if (LastnameTextBox.Text.Trim().Length == 0)
+            {
+                ErrorProvider.SetError(LastnameTextBox, "Enter lastname, please.");
+                isValidated = false;
+            }
+            else
+            {
+                ErrorProvider.SetError(LastnameTextBox, "");
+            }
+            return isValidated;
+        }
+
+        private bool ValidateDegree()
+        {
+            bool isValidated = true;
+            if (DegreeComboBox.SelectedIndex <= 0)
+            {
+                ErrorProvider.SetError(DegreeComboBox, "Select degree.");
+                isValidated = false;
+            }
+            else
+            {
+                ErrorProvider.SetError(DegreeComboBox, "");
+            }
+
+            return isValidated;
         }
     }
 }
