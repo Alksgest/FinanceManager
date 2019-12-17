@@ -52,12 +52,54 @@ namespace FinanceManagerClient
 
         private void LoginButtonClick(object sender, EventArgs e)
         {
-            var degree = (Degree)DegreeComboBox.SelectedItem;
-            Login(this, new LoginEventArgs
+            if (ValidateModel())
             {
-                Degree = degree,
-                Lastname = NameTextBox.Text
-            });
+                var degree = (Degree)DegreeComboBox.SelectedItem;
+                Login(this, new LoginEventArgs
+                {
+                    Degree = degree,
+                    Lastname = NameTextBox.Text
+                });
+            }
+        }
+
+        private bool ValidateModel()
+        {
+            var isSurnameValid = ValidateSurname();
+            var isDegreeValid = ValidateDegree();
+
+            return isSurnameValid && isDegreeValid;
+        }
+
+        private bool ValidateSurname()
+        {
+            bool isValidated = true;
+            if (NameTextBox.Text.Trim().Length == 0)
+            {
+                ErrorProvider.SetError(NameTextBox, "Enter lastname, please.");
+                isValidated = false;
+            }
+            else
+            {
+                ErrorProvider.SetError(NameTextBox, "");
+            }
+            return isValidated;
+        }
+
+        private bool ValidateDegree()
+        {
+            bool isValidated = true;
+            if(DegreeComboBox.SelectedIndex <= 0)
+            {
+                ErrorProvider.SetError(DegreeComboBox, "Select degree.");
+                isValidated = false;
+            }
+            else
+            {
+                ErrorProvider.SetError(DegreeComboBox, "");
+            }
+
+            return isValidated;
         }
     
         private void InitControls()
