@@ -5,7 +5,7 @@ using FinanceManagerSDK.Models;
 namespace FinanceManagerSDK.Repositories
 {
 
-    public class ReasonRepository : AbstractRepository<TransactionReason>
+    public class ReasonRepository : AbstractRepository<TransactionReason>, IReasonRepository
     {
         public ReasonRepository() : base(@"db\allowedReasons.db") { }
 

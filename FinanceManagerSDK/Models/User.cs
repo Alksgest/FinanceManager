@@ -35,5 +35,10 @@ namespace FinanceManagerSDK.Models
             hashCode = hashCode * -1521134295 + Degree.GetHashCode();
             return hashCode;
         }
+
+        public override string ToString()
+        {
+            return $"{Firstname} {Lastname}";
+        }
     }
 }

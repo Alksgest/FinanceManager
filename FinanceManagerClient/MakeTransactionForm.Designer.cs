@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.AmountNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.DateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.CommentTextBox = new System.Windows.Forms.TextBox();
             this.ReasonComboBox = new System.Windows.Forms.ComboBox();
-            this.BrotherComboBox = new System.Windows.Forms.ComboBox();
+            this.TransactionOwnerComboBox = new System.Windows.Forms.ComboBox();
             this.CurrencyComboBox = new System.Windows.Forms.ComboBox();
             this.TypeComboBox = new System.Windows.Forms.ComboBox();
             this.AmountLabel = new System.Windows.Forms.Label();
@@ -41,22 +42,34 @@
             this.ReasonLabel = new System.Windows.Forms.Label();
             this.TypeLabel = new System.Windows.Forms.Label();
             this.DateLabel = new System.Windows.Forms.Label();
-            this.MakeTrButton = new System.Windows.Forms.Button();
+            this.MakeTransactionButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
+            this.ErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.AmountNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // AmountNumericUpDown
             // 
             this.AmountNumericUpDown.Location = new System.Drawing.Point(11, 25);
+            this.AmountNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            655360});
             this.AmountNumericUpDown.Name = "AmountNumericUpDown";
             this.AmountNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.AmountNumericUpDown.TabIndex = 0;
             this.AmountNumericUpDown.Tag = "";
+            this.AmountNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            655360});
             // 
             // DateTimePicker
             // 
-            this.DateTimePicker.Location = new System.Drawing.Point(138, 65);
+            this.DateTimePicker.Location = new System.Drawing.Point(158, 65);
             this.DateTimePicker.Name = "DateTimePicker";
             this.DateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.DateTimePicker.TabIndex = 1;
@@ -77,13 +90,13 @@
             this.ReasonComboBox.Size = new System.Drawing.Size(121, 21);
             this.ReasonComboBox.TabIndex = 3;
             // 
-            // BrotherComboBox
+            // TransactionOwnerComboBox
             // 
-            this.BrotherComboBox.FormattingEnabled = true;
-            this.BrotherComboBox.Location = new System.Drawing.Point(11, 104);
-            this.BrotherComboBox.Name = "BrotherComboBox";
-            this.BrotherComboBox.Size = new System.Drawing.Size(121, 21);
-            this.BrotherComboBox.TabIndex = 4;
+            this.TransactionOwnerComboBox.FormattingEnabled = true;
+            this.TransactionOwnerComboBox.Location = new System.Drawing.Point(11, 104);
+            this.TransactionOwnerComboBox.Name = "TransactionOwnerComboBox";
+            this.TransactionOwnerComboBox.Size = new System.Drawing.Size(121, 21);
+            this.TransactionOwnerComboBox.TabIndex = 4;
             // 
             // CurrencyComboBox
             // 
@@ -96,7 +109,7 @@
             // TypeComboBox
             // 
             this.TypeComboBox.FormattingEnabled = true;
-            this.TypeComboBox.Location = new System.Drawing.Point(138, 24);
+            this.TypeComboBox.Location = new System.Drawing.Point(158, 24);
             this.TypeComboBox.Name = "TypeComboBox";
             this.TypeComboBox.Size = new System.Drawing.Size(121, 21);
             this.TypeComboBox.TabIndex = 6;
@@ -140,7 +153,7 @@
             // TypeLabel
             // 
             this.TypeLabel.AutoSize = true;
-            this.TypeLabel.Location = new System.Drawing.Point(137, 9);
+            this.TypeLabel.Location = new System.Drawing.Point(154, 8);
             this.TypeLabel.Name = "TypeLabel";
             this.TypeLabel.Size = new System.Drawing.Size(31, 13);
             this.TypeLabel.TabIndex = 11;
@@ -149,21 +162,21 @@
             // DateLabel
             // 
             this.DateLabel.AutoSize = true;
-            this.DateLabel.Location = new System.Drawing.Point(135, 48);
+            this.DateLabel.Location = new System.Drawing.Point(155, 48);
             this.DateLabel.Name = "DateLabel";
             this.DateLabel.Size = new System.Drawing.Size(30, 13);
             this.DateLabel.TabIndex = 12;
             this.DateLabel.Text = "Date";
             // 
-            // MakeTrButton
+            // MakeTransactionButton
             // 
-            this.MakeTrButton.Location = new System.Drawing.Point(336, 248);
-            this.MakeTrButton.Name = "MakeTrButton";
-            this.MakeTrButton.Size = new System.Drawing.Size(118, 23);
-            this.MakeTrButton.TabIndex = 13;
-            this.MakeTrButton.Text = "Make Transaction";
-            this.MakeTrButton.UseVisualStyleBackColor = true;
-            this.MakeTrButton.Click += new System.EventHandler(this.MakeTrButton_Click);
+            this.MakeTransactionButton.Location = new System.Drawing.Point(336, 248);
+            this.MakeTransactionButton.Name = "MakeTransactionButton";
+            this.MakeTransactionButton.Size = new System.Drawing.Size(118, 23);
+            this.MakeTransactionButton.TabIndex = 13;
+            this.MakeTransactionButton.Text = "Make Transaction";
+            this.MakeTransactionButton.UseVisualStyleBackColor = true;
+            this.MakeTransactionButton.Click += new System.EventHandler(this.OnMakeTransactionButtonClick);
             // 
             // ResetButton
             // 
@@ -173,7 +186,11 @@
             this.ResetButton.TabIndex = 14;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = true;
-            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            this.ResetButton.Click += new System.EventHandler(this.OnResetButtonClick);
+            // 
+            // ErrorProvider
+            // 
+            this.ErrorProvider.ContainerControl = this;
             // 
             // MakeTransactionForm
             // 
@@ -181,7 +198,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(459, 281);
             this.Controls.Add(this.ResetButton);
-            this.Controls.Add(this.MakeTrButton);
+            this.Controls.Add(this.MakeTransactionButton);
             this.Controls.Add(this.DateLabel);
             this.Controls.Add(this.TypeLabel);
             this.Controls.Add(this.ReasonLabel);
@@ -190,7 +207,7 @@
             this.Controls.Add(this.AmountLabel);
             this.Controls.Add(this.TypeComboBox);
             this.Controls.Add(this.CurrencyComboBox);
-            this.Controls.Add(this.BrotherComboBox);
+            this.Controls.Add(this.TransactionOwnerComboBox);
             this.Controls.Add(this.ReasonComboBox);
             this.Controls.Add(this.CommentTextBox);
             this.Controls.Add(this.DateTimePicker);
@@ -203,6 +220,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MakeTransactionForm";
             ((System.ComponentModel.ISupportInitialize)(this.AmountNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,7 +232,7 @@
         private System.Windows.Forms.DateTimePicker DateTimePicker;
         private System.Windows.Forms.TextBox CommentTextBox;
         private System.Windows.Forms.ComboBox ReasonComboBox;
-        private System.Windows.Forms.ComboBox BrotherComboBox;
+        private System.Windows.Forms.ComboBox TransactionOwnerComboBox;
         private System.Windows.Forms.ComboBox CurrencyComboBox;
         private System.Windows.Forms.ComboBox TypeComboBox;
         private System.Windows.Forms.Label AmountLabel;
@@ -223,7 +241,8 @@
         private System.Windows.Forms.Label ReasonLabel;
         private System.Windows.Forms.Label TypeLabel;
         private System.Windows.Forms.Label DateLabel;
-        private System.Windows.Forms.Button MakeTrButton;
+        private System.Windows.Forms.Button MakeTransactionButton;
         private System.Windows.Forms.Button ResetButton;
+        private System.Windows.Forms.ErrorProvider ErrorProvider;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 
 using FinanceManagerSDK.Models;
@@ -24,29 +25,67 @@ namespace FinanceManagerClient
             InvokeInitialize(new EventArgs());
         }
 
-        public void InvokeInitialize(EventArgs e) => Initialize?.Invoke(this, e);
-
-        private void MakeTrButton_Click(object sender, EventArgs e)
+        public void InvokeInitialize(EventArgs e)
         {
-            TransactionStarted?.Invoke(null);
+            Initialize?.Invoke(this, e);
+            InitControls();
         }
 
-        private void ResetButton_Click(object sender, EventArgs e)
+        private void OnMakeTransactionButtonClick(object sender, EventArgs e)
         {
-            ResetForm();
+            if (ValidateModel())
+            {
+                var transaction = CreateTransaction();
+
+                TransactionStarted?.Invoke(transaction);
+            }
         }
+
+        private bool ValidateModel()
+        {
+            bool isOwnerValid = ValidateComboBox(TransactionOwnerComboBox, "Select transaction owner.");
+            bool isCurrencyValid = ValidateComboBox(CurrencyComboBox, "Select currency.");
+            bool isReasonValid = ValidateComboBox(ReasonComboBox, "Select transaction reason.");
+            bool isTypeValid = ValidateComboBox(TypeComboBox, "Select transaction type.");
+
+            return isOwnerValid && isCurrencyValid && isReasonValid && isTypeValid;
+        }
+
+    
+        private bool ValidateComboBox(ComboBox cb, string message)
+        {
+            bool isValid = true;
+            if (cb.SelectedIndex <= 0)
+            {
+                isValid = false;
+                ErrorProvider.SetError(cb, message);
+            }
+            else
+            {
+                ErrorProvider.SetError(cb, "");
+            }
+
+            return isValid;
+        }
+
+        private void OnResetButtonClick(object sender, EventArgs e) => ResetForm();
 
         private Transaction CreateTransaction()
         {
+            var owner = TransactionOwnerComboBox.SelectedItem as User;
+            var currency = (Currency)CurrencyComboBox.SelectedItem;
+            var reason = ReasonComboBox.SelectedItem as TransactionReason;
+            var type = (TransactionType)TypeComboBox.SelectedItem;
+
             Transaction tr = new Transaction
             {
                 Amount = AmountNumericUpDown.Value,
-                TransactionOwner = BrotherComboBox.SelectedItem as User,
+                TransactionOwner = owner,
                 Comment = CommentTextBox.Text,
-                Currency = Currency.UAH, //mock
+                Currency = currency,
                 Date = DateTimePicker.Value,
-                Reason = ReasonComboBox.SelectedItem as TransactionReason,
-                Type = TransactionType.Income // mock
+                Reason = reason,
+                Type = type,
             };
 
             return tr;
@@ -54,13 +93,33 @@ namespace FinanceManagerClient
 
         private void ResetForm()
         {
-            AmountNumericUpDown.Value = 0;
-            BrotherComboBox.SelectedIndex = 0;
             CommentTextBox.Clear();
+            TypeComboBox.SelectedIndex = 0;
+            ReasonComboBox.SelectedIndex = 0;
             CurrencyComboBox.SelectedIndex = 0;
             DateTimePicker.Value = DateTime.Now;
-            ReasonComboBox.SelectedIndex = 0;
-            TypeComboBox.SelectedIndex = 0;
+            TransactionOwnerComboBox.SelectedIndex = 0;
+            AmountNumericUpDown.Value = AmountNumericUpDown.Minimum;
+
+            ErrorProvider.SetError(TypeComboBox, "");
+            ErrorProvider.SetError(ReasonComboBox, "");
+            ErrorProvider.SetError(CurrencyComboBox, "");
+            ErrorProvider.SetError(TransactionOwnerComboBox, "");
+        }
+
+        private void InitControls()
+        {
+            TransactionOwnerComboBox.Items.Add("");
+            TransactionOwnerComboBox.Items.AddRange(_presenter.Users.ToArray());
+
+            object[] currencies = { "", Currency.UAH, Currency.USD, Currency.EUR };
+            CurrencyComboBox.Items.AddRange(currencies);
+
+            ReasonComboBox.Items.Add("");
+            ReasonComboBox.Items.AddRange(_presenter.Reasons.ToArray());
+
+            object[] transactionTypes = { "", TransactionType.Income, TransactionType.Outcome };
+            TypeComboBox.Items.AddRange(transactionTypes);
         }
     }
 }

@@ -54,5 +54,10 @@ namespace FinanceManagerClient
         {
             AddUser?.Invoke(sender, e);
         }
+
+        private void addTransactionReasonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

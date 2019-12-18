@@ -7,7 +7,7 @@ using LiteDB;
 
 namespace FinanceManagerSDK.Repositories
 {
-    public abstract class AbstractRepository<T>
+    public abstract class AbstractRepository<T> : IDisposable
     {
         private readonly String _dbString;
         private readonly LiteDatabase _db;
@@ -62,6 +62,28 @@ namespace FinanceManagerSDK.Repositories
                 collection.Update(obj);
             }
         }
-    }
 
+        #region IDisposable Support
+        private bool disposedValue = false; 
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    _db.Dispose();
+                }
+
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+    }
+    #endregion
 }
+
