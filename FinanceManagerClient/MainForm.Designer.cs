@@ -41,14 +41,16 @@
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MainTabControl = new System.Windows.Forms.TabControl();
             this.MainTabPage = new System.Windows.Forms.TabPage();
-            this.UsersTabPage = new System.Windows.Forms.TabPage();
-            this.TransactionTabPage = new System.Windows.Forms.TabPage();
-            this.UsersGridControl = new FinanceManagerClient.Controls.UsersGridControl();
+            this.MainTabControl = new System.Windows.Forms.TabControl();
+            this.AnnualFeeTabPage = new System.Windows.Forms.TabPage();
+            this.ContributionTabPage = new System.Windows.Forms.TabPage();
+            this.OtherIncomeTabPage = new System.Windows.Forms.TabPage();
+            this.OtherOutcomeTabPage = new System.Windows.Forms.TabPage();
+            this.BalanceTabPage = new System.Windows.Forms.TabPage();
+            this.RegistryTabPage = new System.Windows.Forms.TabPage();
             this.MainMenuStrip.SuspendLayout();
             this.MainTabControl.SuspendLayout();
-            this.UsersTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // MakeTransactionButton
@@ -150,17 +152,6 @@
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
-            // MainTabControl
-            // 
-            this.MainTabControl.Controls.Add(this.MainTabPage);
-            this.MainTabControl.Controls.Add(this.UsersTabPage);
-            this.MainTabControl.Controls.Add(this.TransactionTabPage);
-            this.MainTabControl.Location = new System.Drawing.Point(13, 28);
-            this.MainTabControl.Name = "MainTabControl";
-            this.MainTabControl.SelectedIndex = 0;
-            this.MainTabControl.Size = new System.Drawing.Size(537, 381);
-            this.MainTabControl.TabIndex = 3;
-            // 
             // MainTabPage
             // 
             this.MainTabPage.Location = new System.Drawing.Point(4, 22);
@@ -171,35 +162,75 @@
             this.MainTabPage.Text = "Main";
             this.MainTabPage.UseVisualStyleBackColor = true;
             // 
-            // UsersTabPage
+            // MainTabControl
             // 
-            this.UsersTabPage.Controls.Add(this.UsersGridControl);
-            this.UsersTabPage.Location = new System.Drawing.Point(4, 22);
-            this.UsersTabPage.Name = "UsersTabPage";
-            this.UsersTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.UsersTabPage.Size = new System.Drawing.Size(529, 355);
-            this.UsersTabPage.TabIndex = 1;
-            this.UsersTabPage.Text = "Users";
-            this.UsersTabPage.UseVisualStyleBackColor = true;
+            this.MainTabControl.Controls.Add(this.MainTabPage);
+            this.MainTabControl.Controls.Add(this.AnnualFeeTabPage);
+            this.MainTabControl.Controls.Add(this.ContributionTabPage);
+            this.MainTabControl.Controls.Add(this.OtherIncomeTabPage);
+            this.MainTabControl.Controls.Add(this.OtherOutcomeTabPage);
+            this.MainTabControl.Controls.Add(this.BalanceTabPage);
+            this.MainTabControl.Controls.Add(this.RegistryTabPage);
+            this.MainTabControl.Location = new System.Drawing.Point(13, 28);
+            this.MainTabControl.Name = "MainTabControl";
+            this.MainTabControl.SelectedIndex = 0;
+            this.MainTabControl.Size = new System.Drawing.Size(537, 381);
+            this.MainTabControl.TabIndex = 3;
             // 
-            // TransactionTabPage
+            // AnnualFeeTabPage
             // 
-            this.TransactionTabPage.Location = new System.Drawing.Point(4, 22);
-            this.TransactionTabPage.Name = "TransactionTabPage";
-            this.TransactionTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.TransactionTabPage.Size = new System.Drawing.Size(529, 355);
-            this.TransactionTabPage.TabIndex = 2;
-            this.TransactionTabPage.Text = "Transactions";
-            this.TransactionTabPage.UseVisualStyleBackColor = true;
+            this.AnnualFeeTabPage.Location = new System.Drawing.Point(4, 22);
+            this.AnnualFeeTabPage.Name = "AnnualFeeTabPage";
+            this.AnnualFeeTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.AnnualFeeTabPage.Size = new System.Drawing.Size(529, 355);
+            this.AnnualFeeTabPage.TabIndex = 1;
+            this.AnnualFeeTabPage.Text = "Annual Fee";
+            this.AnnualFeeTabPage.UseVisualStyleBackColor = true;
             // 
-            // UsersGridControl
+            // ContributionTabPage
             // 
-            this.UsersGridControl.Location = new System.Drawing.Point(0, 0);
-            this.UsersGridControl.MaximumSize = new System.Drawing.Size(529, 355);
-            this.UsersGridControl.MinimumSize = new System.Drawing.Size(529, 355);
-            this.UsersGridControl.Name = "UsersGridControl";
-            this.UsersGridControl.Size = new System.Drawing.Size(529, 355);
-            this.UsersGridControl.TabIndex = 0;
+            this.ContributionTabPage.Location = new System.Drawing.Point(4, 22);
+            this.ContributionTabPage.Name = "ContributionTabPage";
+            this.ContributionTabPage.Size = new System.Drawing.Size(529, 355);
+            this.ContributionTabPage.TabIndex = 2;
+            this.ContributionTabPage.Text = "Contribution to the GLoU";
+            this.ContributionTabPage.UseVisualStyleBackColor = true;
+            // 
+            // OtherIncomeTabPage
+            // 
+            this.OtherIncomeTabPage.Location = new System.Drawing.Point(4, 22);
+            this.OtherIncomeTabPage.Name = "OtherIncomeTabPage";
+            this.OtherIncomeTabPage.Size = new System.Drawing.Size(529, 355);
+            this.OtherIncomeTabPage.TabIndex = 3;
+            this.OtherIncomeTabPage.Text = "Other Income";
+            this.OtherIncomeTabPage.UseVisualStyleBackColor = true;
+            // 
+            // OtherOutcomeTabPage
+            // 
+            this.OtherOutcomeTabPage.Location = new System.Drawing.Point(4, 22);
+            this.OtherOutcomeTabPage.Name = "OtherOutcomeTabPage";
+            this.OtherOutcomeTabPage.Size = new System.Drawing.Size(529, 355);
+            this.OtherOutcomeTabPage.TabIndex = 4;
+            this.OtherOutcomeTabPage.Text = "Other Outcome";
+            this.OtherOutcomeTabPage.UseVisualStyleBackColor = true;
+            // 
+            // BalanceTabPage
+            // 
+            this.BalanceTabPage.Location = new System.Drawing.Point(4, 22);
+            this.BalanceTabPage.Name = "BalanceTabPage";
+            this.BalanceTabPage.Size = new System.Drawing.Size(529, 355);
+            this.BalanceTabPage.TabIndex = 5;
+            this.BalanceTabPage.Text = "Balance";
+            this.BalanceTabPage.UseVisualStyleBackColor = true;
+            // 
+            // RegistryTabPage
+            // 
+            this.RegistryTabPage.Location = new System.Drawing.Point(4, 22);
+            this.RegistryTabPage.Name = "RegistryTabPage";
+            this.RegistryTabPage.Size = new System.Drawing.Size(529, 355);
+            this.RegistryTabPage.TabIndex = 6;
+            this.RegistryTabPage.Text = "Registry";
+            this.RegistryTabPage.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -217,7 +248,6 @@
             this.MainMenuStrip.ResumeLayout(false);
             this.MainMenuStrip.PerformLayout();
             this.MainTabControl.ResumeLayout(false);
-            this.UsersTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,11 +268,15 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem addTransactionReasonToolStripMenuItem;
-        private System.Windows.Forms.TabControl MainTabControl;
-        private System.Windows.Forms.TabPage MainTabPage;
-        private System.Windows.Forms.TabPage UsersTabPage;
-        private System.Windows.Forms.TabPage TransactionTabPage;
         private Controls.UsersGridControl UsersGridControl;
+        private System.Windows.Forms.TabPage MainTabPage;
+        private System.Windows.Forms.TabControl MainTabControl;
+        private System.Windows.Forms.TabPage AnnualFeeTabPage;
+        private System.Windows.Forms.TabPage ContributionTabPage;
+        private System.Windows.Forms.TabPage OtherIncomeTabPage;
+        private System.Windows.Forms.TabPage OtherOutcomeTabPage;
+        private System.Windows.Forms.TabPage BalanceTabPage;
+        private System.Windows.Forms.TabPage RegistryTabPage;
     }
 }
 

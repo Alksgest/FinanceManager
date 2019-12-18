@@ -4,10 +4,12 @@ using FinanceManagerSDK.Models;
 
 namespace FinanceManagerClient.Views
 {
-    interface IMainView : IView
+    public interface IMainView : IView
     {
         event EventHandler MakeTransaction;
         event EventHandler AddReason;
         event EventHandler AddUser;
+
+        event EventHandler RefreshNeeded;
     }
 }

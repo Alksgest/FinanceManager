@@ -10,17 +10,22 @@ using System.Windows.Forms;
 
 using FinanceManagerClient.Views;
 using FinanceManagerClient.Presenters;
+using FinanceManagerSDK.Models;
 
 namespace FinanceManagerClient.Controls
 {
     public partial class UsersGridControl : UserControl, IUsersView
     {
         public event EventHandler Initialize;
+        public event EventHandler Refresh;
+
         public object DataSource { get; set; }
 
         private readonly UsersGridControlPresenter _presenter;
 
-        public UsersGridControl()
+        private readonly IMainView _parent;
+
+        public UsersGridControl(IMainView parent)
         {
             InitializeComponent();
 
@@ -29,6 +34,15 @@ namespace FinanceManagerClient.Controls
             InvokeInitialize(EventArgs.Empty);
 
             _presenter.DataSourceUpdated += OnDataSourceUpdated;
+            _presenter.SetDataSoruce();
+
+            _parent = parent;
+            _parent.RefreshNeeded += OnRefreshNeeded;
+        }
+
+        private void OnRefreshNeeded(object sender, EventArgs e)
+        {
+            Refresh?.Invoke(sender, e);
         }
 
         private void OnDataSourceUpdated(object sender, EventArgs e)

@@ -15,7 +15,9 @@ namespace FinanceManagerClient
         public event EventHandler AddUser;
         public event EventHandler AddReason;
 
-        private Form _parentForm;
+        public event EventHandler RefreshNeeded;
+
+        private readonly Form _loginForm;
 
         private readonly MainPresenter _presenter;
 
@@ -23,7 +25,7 @@ namespace FinanceManagerClient
         {
             InitializeComponent();
 
-            _parentForm = _view as Form;
+            _loginForm = _view as Form;
 
             _presenter = new MainPresenter(this, user);
 
@@ -36,7 +38,7 @@ namespace FinanceManagerClient
         private void OnMainFormFormClosed(object sender, FormClosedEventArgs e)
         {
             this.Close();
-            this._parentForm.Close();
+            this._loginForm.Close();
         }
 
         public void InvokeInitialize(EventArgs e) => Initialize?.Invoke(this, e);
@@ -44,21 +46,25 @@ namespace FinanceManagerClient
         private void MakeTransactionButtonClick(object sender, EventArgs e)
         {
             MakeTransaction?.Invoke(sender, e);
+            RefreshNeeded?.Invoke(sender, e);
         }
 
         private void MakeTransactionToolStripMenuItemClick(object sender, EventArgs e)
         {
             MakeTransaction?.Invoke(sender, e);
+            RefreshNeeded?.Invoke(sender, e);
         }
 
         private void AddUserToolStripMenuItemClick(object sender, EventArgs e)
         {
             AddUser?.Invoke(sender, e);
+            RefreshNeeded?.Invoke(sender, e);
         }
 
         private void AddTransactionReasonToolStripMenuItemClick(object sender, EventArgs e)
         {
             AddReason?.Invoke(sender, e);
+            RefreshNeeded?.Invoke(sender, e);
         }
     }
 }

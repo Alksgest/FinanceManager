@@ -15,16 +15,24 @@ namespace FinanceManagerClient.Presenters
 
         private readonly IUserRepository _repo;
 
+
         public UsersGridControlPresenter(IUsersView view) : base(view)
         {
             _repo = new UserRepository();
 
+            View.Refresh += OnRefresh;
+
             SetDataSoruce();
         }
 
-        private void SetDataSoruce()
+        private void OnRefresh(object sender, EventArgs e)
+        {
+            SetDataSoruce();
+        }
+
+        public void SetDataSoruce()
         {           
-            View.DataSource = _repo.GetUsers();
+            View.DataSource = _repo.GetUsers().ToList();
             DataSourceUpdated?.Invoke(this, EventArgs.Empty);
         }
     }
