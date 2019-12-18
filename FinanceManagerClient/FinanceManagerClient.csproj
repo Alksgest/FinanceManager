@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -56,6 +57,14 @@
     </Compile>
     <Compile Include="AddReasonForm.Designer.cs">
       <DependentUpon>AddReasonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presenters\UsersGridControlPresenter.cs" />
+    <Compile Include="Views\IUsersView.cs" />
+    <Compile Include="Controls\UsersGridControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UsersGridControl.Designer.cs">
+      <DependentUpon>UsersGridControl.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateUserForm.cs">
       <SubType>Form</SubType>
@@ -99,6 +108,9 @@
     <EmbeddedResource Include="AddReasonForm.resx">
       <DependentUpon>AddReasonForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UsersGridControl.resx">
+      <DependentUpon>UsersGridControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateUserForm.resx">
       <DependentUpon>CreateUserForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,6 +132,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\FinanceManagerSDK.Models.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

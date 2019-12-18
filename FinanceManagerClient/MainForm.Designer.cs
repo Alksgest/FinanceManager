@@ -45,8 +45,10 @@
             this.MainTabPage = new System.Windows.Forms.TabPage();
             this.UsersTabPage = new System.Windows.Forms.TabPage();
             this.TransactionTabPage = new System.Windows.Forms.TabPage();
+            this.UsersGridControl = new FinanceManagerClient.Controls.UsersGridControl();
             this.MainMenuStrip.SuspendLayout();
             this.MainTabControl.SuspendLayout();
+            this.UsersTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // MakeTransactionButton
@@ -171,6 +173,7 @@
             // 
             // UsersTabPage
             // 
+            this.UsersTabPage.Controls.Add(this.UsersGridControl);
             this.UsersTabPage.Location = new System.Drawing.Point(4, 22);
             this.UsersTabPage.Name = "UsersTabPage";
             this.UsersTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -189,6 +192,15 @@
             this.TransactionTabPage.Text = "Transactions";
             this.TransactionTabPage.UseVisualStyleBackColor = true;
             // 
+            // UsersGridControl
+            // 
+            this.UsersGridControl.Location = new System.Drawing.Point(0, 0);
+            this.UsersGridControl.MaximumSize = new System.Drawing.Size(529, 355);
+            this.UsersGridControl.MinimumSize = new System.Drawing.Size(529, 355);
+            this.UsersGridControl.Name = "UsersGridControl";
+            this.UsersGridControl.Size = new System.Drawing.Size(529, 355);
+            this.UsersGridControl.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -205,6 +217,7 @@
             this.MainMenuStrip.ResumeLayout(false);
             this.MainMenuStrip.PerformLayout();
             this.MainTabControl.ResumeLayout(false);
+            this.UsersTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,6 +242,7 @@
         private System.Windows.Forms.TabPage MainTabPage;
         private System.Windows.Forms.TabPage UsersTabPage;
         private System.Windows.Forms.TabPage TransactionTabPage;
+        private Controls.UsersGridControl UsersGridControl;
     }
 }
 
