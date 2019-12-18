@@ -26,24 +26,23 @@ namespace FinanceManagerClient.Presenters
 
             InitProperties();
         }
-
         private void InitProperties()
         {
             Reasons = _reasonRepo.GetReasons();
             Users = _userRepo.GetUsers();
         }
 
-        private void OnTransactionStarted(Transaction row)
+        private void OnTransactionStarted(object sender, Transaction tr)
         {
             Transaction builded = new Transaction
             {
-                Amount = row.Amount,
-                TransactionOwner = row.TransactionOwner,
-                Comment = row.Comment,
-                Currency = row.Currency,
-                Date = row.Date != null ? row.Date : DateTime.Now,
-                Reason = row.Reason,
-                Type = row.Type, 
+                Amount = tr.Amount,
+                TransactionOwner = tr.TransactionOwner,
+                Comment = tr.Comment,
+                Currency = tr.Currency,
+                Date = tr.Date != null ? tr.Date : DateTime.Now,
+                Reason = tr.Reason,
+                Type = tr.Type, 
                 TransactionMaker = CurrentUser
             };
 

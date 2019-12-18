@@ -32,18 +32,21 @@
             this.MainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeTransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.addUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.increaseUserRankToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.addTransactionReasonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatisticToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MainPictureBox = new System.Windows.Forms.PictureBox();
-            this.addTransactionReasonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.MainTabControl = new System.Windows.Forms.TabControl();
+            this.MainTabPage = new System.Windows.Forms.TabPage();
+            this.UsersTabPage = new System.Windows.Forms.TabPage();
+            this.TransactionTabPage = new System.Windows.Forms.TabPage();
             this.MainMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).BeginInit();
+            this.MainTabControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // MakeTransactionButton
@@ -68,8 +71,6 @@
             this.MainMenuStrip.Name = "MainMenuStrip";
             this.MainMenuStrip.Size = new System.Drawing.Size(562, 24);
             this.MainMenuStrip.TabIndex = 1;
-            this.MainMenuStrip.Text = "menuStrip1";
-            this.MainMenuStrip.UseWaitCursor = true;
             // 
             // fileToolStripMenuItem
             // 
@@ -91,6 +92,11 @@
             this.makeTransactionToolStripMenuItem.Text = "Make Transaction";
             this.makeTransactionToolStripMenuItem.Click += new System.EventHandler(this.MakeTransactionToolStripMenuItemClick);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(197, 6);
+            // 
             // addUserToolStripMenuItem
             // 
             this.addUserToolStripMenuItem.Name = "addUserToolStripMenuItem";
@@ -103,6 +109,18 @@
             this.increaseUserRankToolStripMenuItem.Name = "increaseUserRankToolStripMenuItem";
             this.increaseUserRankToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.increaseUserRankToolStripMenuItem.Text = "Increase User Rank";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(197, 6);
+            // 
+            // addTransactionReasonToolStripMenuItem
+            // 
+            this.addTransactionReasonToolStripMenuItem.Name = "addTransactionReasonToolStripMenuItem";
+            this.addTransactionReasonToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.addTransactionReasonToolStripMenuItem.Text = "Add Transaction Reason";
+            this.addTransactionReasonToolStripMenuItem.Click += new System.EventHandler(this.AddTransactionReasonToolStripMenuItemClick);
             // 
             // StatisticToolStripMenuItem
             // 
@@ -130,38 +148,53 @@
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
-            // MainPictureBox
+            // MainTabControl
             // 
-            this.MainPictureBox.Location = new System.Drawing.Point(12, 77);
-            this.MainPictureBox.Name = "MainPictureBox";
-            this.MainPictureBox.Size = new System.Drawing.Size(538, 289);
-            this.MainPictureBox.TabIndex = 2;
-            this.MainPictureBox.TabStop = false;
-            this.MainPictureBox.UseWaitCursor = true;
+            this.MainTabControl.Controls.Add(this.MainTabPage);
+            this.MainTabControl.Controls.Add(this.UsersTabPage);
+            this.MainTabControl.Controls.Add(this.TransactionTabPage);
+            this.MainTabControl.Location = new System.Drawing.Point(13, 28);
+            this.MainTabControl.Name = "MainTabControl";
+            this.MainTabControl.SelectedIndex = 0;
+            this.MainTabControl.Size = new System.Drawing.Size(537, 381);
+            this.MainTabControl.TabIndex = 3;
             // 
-            // addTransactionReasonToolStripMenuItem
+            // MainTabPage
             // 
-            this.addTransactionReasonToolStripMenuItem.Name = "addTransactionReasonToolStripMenuItem";
-            this.addTransactionReasonToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.addTransactionReasonToolStripMenuItem.Text = "Add Transaction Reason";
-            this.addTransactionReasonToolStripMenuItem.Click += new System.EventHandler(this.addTransactionReasonToolStripMenuItem_Click);
+            this.MainTabPage.Location = new System.Drawing.Point(4, 22);
+            this.MainTabPage.Name = "MainTabPage";
+            this.MainTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.MainTabPage.Size = new System.Drawing.Size(529, 355);
+            this.MainTabPage.TabIndex = 0;
+            this.MainTabPage.Text = "Main";
+            this.MainTabPage.UseVisualStyleBackColor = true;
             // 
-            // toolStripSeparator1
+            // UsersTabPage
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(197, 6);
+            this.UsersTabPage.Location = new System.Drawing.Point(4, 22);
+            this.UsersTabPage.Name = "UsersTabPage";
+            this.UsersTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.UsersTabPage.Size = new System.Drawing.Size(529, 355);
+            this.UsersTabPage.TabIndex = 1;
+            this.UsersTabPage.Text = "Users";
+            this.UsersTabPage.UseVisualStyleBackColor = true;
             // 
-            // toolStripSeparator2
+            // TransactionTabPage
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(197, 6);
+            this.TransactionTabPage.Location = new System.Drawing.Point(4, 22);
+            this.TransactionTabPage.Name = "TransactionTabPage";
+            this.TransactionTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.TransactionTabPage.Size = new System.Drawing.Size(529, 355);
+            this.TransactionTabPage.TabIndex = 2;
+            this.TransactionTabPage.Text = "Transactions";
+            this.TransactionTabPage.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(562, 450);
-            this.Controls.Add(this.MainPictureBox);
+            this.Controls.Add(this.MainTabControl);
             this.Controls.Add(this.MakeTransactionButton);
             this.Controls.Add(this.MainMenuStrip);
             this.MaximizeBox = false;
@@ -169,10 +202,9 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pdks";
-            this.UseWaitCursor = true;
             this.MainMenuStrip.ResumeLayout(false);
             this.MainMenuStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).EndInit();
+            this.MainTabControl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,12 +220,15 @@
         private System.Windows.Forms.ToolStripMenuItem increaseUserRankToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem StatisticToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.PictureBox MainPictureBox;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pDFToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem addTransactionReasonToolStripMenuItem;
+        private System.Windows.Forms.TabControl MainTabControl;
+        private System.Windows.Forms.TabPage MainTabPage;
+        private System.Windows.Forms.TabPage UsersTabPage;
+        private System.Windows.Forms.TabPage TransactionTabPage;
     }
 }
 

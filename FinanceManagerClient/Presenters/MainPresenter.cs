@@ -16,11 +16,20 @@ namespace FinanceManagerClient.Presenters
 
             this.View.MakeTransaction += OnMakeTransactionClicked;
             this.View.AddUser += OnAddUser;
+            this.View.AddReason += OnAddReason;
+        }
+
+        private void OnAddReason(object sender, EventArgs e)
+        {
+            using(var form = new AddReasonForm())
+            {
+                form.ShowDialog();
+            }
         }
 
         private void OnAddUser(object sender, EventArgs e)
         {
-            using (var form = new CreateUserForm())
+            using(var form = new CreateUserForm())
             {
                 form.ShowDialog();
             }

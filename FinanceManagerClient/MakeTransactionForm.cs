@@ -11,7 +11,7 @@ namespace FinanceManagerClient
 {
     public partial class MakeTransactionForm : Form, IMakeTransactionView
     {
-        public event Action<Transaction> TransactionStarted;
+        public event EventHandler<Transaction> TransactionStarted;
         public event EventHandler Initialize;
 
         private readonly MakeTransactionPresenter _presenter;
@@ -37,7 +37,7 @@ namespace FinanceManagerClient
             {
                 var transaction = CreateTransaction();
 
-                TransactionStarted?.Invoke(transaction);
+                TransactionStarted?.Invoke(sender, transaction);
             }
         }
 

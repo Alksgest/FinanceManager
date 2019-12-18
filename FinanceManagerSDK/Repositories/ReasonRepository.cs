@@ -16,14 +16,14 @@ namespace FinanceManagerSDK.Repositories
             return this.GetObjects();
         }
 
-        public void AddReason(TransactionReason tr)
+        public void AddReason(TransactionReason r)
         {
-            this.AddObject(tr);
+            this.AddObject(r);
         }
 
-        public void UpdateReason(TransactionReason tr)
+        public void UpdateReason(TransactionReason r)
         {
-            this.UpdateObject(tr);
+            this.UpdateObject(r);
         }
 
     }

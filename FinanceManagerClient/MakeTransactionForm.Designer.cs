@@ -52,6 +52,11 @@
             // AmountNumericUpDown
             // 
             this.AmountNumericUpDown.Location = new System.Drawing.Point(11, 25);
+            this.AmountNumericUpDown.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
             this.AmountNumericUpDown.Minimum = new decimal(new int[] {
             1,
             0,

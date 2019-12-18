@@ -20,7 +20,7 @@ namespace FinanceManagerSDK.Models
                 $"Amount = {Amount}\n" +
                     $"Currency = {Currency}\n" +
                         $"Comment = {Comment}\n" +
-                            $"Reason = {Reason.Desctiption}\n";
+                            $"Reason = {Reason.ShortDesctiption}\n";
         }
     }
 }

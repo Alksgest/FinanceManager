@@ -13,6 +13,7 @@ namespace FinanceManagerClient
         public event EventHandler Initialize;
         public event EventHandler MakeTransaction;
         public event EventHandler AddUser;
+        public event EventHandler AddReason;
 
         private Form _parentForm;
 
@@ -55,9 +56,9 @@ namespace FinanceManagerClient
             AddUser?.Invoke(sender, e);
         }
 
-        private void addTransactionReasonToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddTransactionReasonToolStripMenuItemClick(object sender, EventArgs e)
         {
-
+            AddReason?.Invoke(sender, e);
         }
     }
 }
