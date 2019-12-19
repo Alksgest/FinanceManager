@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using System.Collections.Generic;
 
 using FinanceManagerSDK.Models;
@@ -25,6 +26,7 @@ namespace FinanceManagerClient.Presenters
             CurrentUser = currentUser;
 
             InitProperties();
+            
         }
         private void InitProperties()
         {
@@ -47,6 +49,7 @@ namespace FinanceManagerClient.Presenters
             };
 
             _transactionRepo.AddTransaction(builded);
+            (View as Form).Close();
         }
 
         protected override void OnViewInitialize(object sender, EventArgs e)

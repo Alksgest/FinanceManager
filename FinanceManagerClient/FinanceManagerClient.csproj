@@ -58,8 +58,25 @@
     <Compile Include="AddReasonForm.Designer.cs">
       <DependentUpon>AddReasonForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ContributionToGluUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ContributionToGluUserControl.Designer.cs">
+      <DependentUpon>ContributionToGluUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MainUserControl.Designer.cs">
+      <DependentUpon>MainUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presenters\ContributionToGluPresenter.cs" />
+    <Compile Include="Presenters\MainSettingsUserControlPresenter.cs" />
     <Compile Include="Presenters\UsersGridControlPresenter.cs" />
-    <Compile Include="Views\IUsersView.cs" />
+    <Compile Include="Args\DateRangeEventArgs.cs" />
+    <Compile Include="Util\GlobalSettings.cs" />
+    <Compile Include="Views\ISettingsView.cs" />
+    <Compile Include="Views\IGridView.cs" />
     <Compile Include="Controls\UsersGridControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -108,6 +125,12 @@
     <EmbeddedResource Include="AddReasonForm.resx">
       <DependentUpon>AddReasonForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ContributionToGLUUserControl.resx">
+      <DependentUpon>ContributionToGluUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MainUserControl.resx">
+      <DependentUpon>MainUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UsersGridControl.resx">
       <DependentUpon>UsersGridControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +155,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\FinanceManagerSDK.Models.Transaction.datasource" />
     <None Include="Properties\DataSources\FinanceManagerSDK.Models.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

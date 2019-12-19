@@ -7,11 +7,11 @@ using FinanceManagerSDK.Repositories;
 
 namespace FinanceManagerSDK.Managers
 {
-    public class IncomeTransactionManager : ITransactionManager
+    public class IncomeTransactionProvider :  ITransactionProvider
     {
         private readonly ITransactionRepository _repository;
 
-        public IncomeTransactionManager()
+        public IncomeTransactionProvider()
         {
             _repository = new TransactionRepository();
         }

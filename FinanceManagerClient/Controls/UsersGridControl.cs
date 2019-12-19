@@ -1,23 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using FinanceManagerClient.Views;
 using FinanceManagerClient.Presenters;
-using FinanceManagerSDK.Models;
 
 namespace FinanceManagerClient.Controls
 {
-    public partial class UsersGridControl : UserControl, IUsersView
+    public partial class UsersGridControl : UserControl, IGridView
     {
         public event EventHandler Initialize;
-        public event EventHandler Refresh;
+        public event EventHandler RefreshDataSource;
 
         public object DataSource { get; set; }
 
@@ -42,7 +34,7 @@ namespace FinanceManagerClient.Controls
 
         private void OnRefreshNeeded(object sender, EventArgs e)
         {
-            Refresh?.Invoke(sender, e);
+            RefreshDataSource?.Invoke(sender, e);
         }
 
         private void OnDataSourceUpdated(object sender, EventArgs e)

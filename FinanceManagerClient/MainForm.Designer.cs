@@ -42,6 +42,7 @@
             this.pDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainTabPage = new System.Windows.Forms.TabPage();
+            this.mainUserControl1 = new FinanceManagerClient.Controls.MainUserControl();
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.AnnualFeeTabPage = new System.Windows.Forms.TabPage();
             this.ContributionTabPage = new System.Windows.Forms.TabPage();
@@ -49,8 +50,11 @@
             this.OtherOutcomeTabPage = new System.Windows.Forms.TabPage();
             this.BalanceTabPage = new System.Windows.Forms.TabPage();
             this.RegistryTabPage = new System.Windows.Forms.TabPage();
+            this.contributionToGluUserControl1 = new FinanceManagerClient.Controls.ContributionToGluUserControl(this);
             this.MainMenuStrip.SuspendLayout();
+            this.MainTabPage.SuspendLayout();
             this.MainTabControl.SuspendLayout();
+            this.ContributionTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // MakeTransactionButton
@@ -154,6 +158,7 @@
             // 
             // MainTabPage
             // 
+            this.MainTabPage.Controls.Add(this.mainUserControl1);
             this.MainTabPage.Location = new System.Drawing.Point(4, 22);
             this.MainTabPage.Name = "MainTabPage";
             this.MainTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -161,6 +166,15 @@
             this.MainTabPage.TabIndex = 0;
             this.MainTabPage.Text = "Main";
             this.MainTabPage.UseVisualStyleBackColor = true;
+            // 
+            // mainUserControl1
+            // 
+            this.mainUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.mainUserControl1.MaximumSize = new System.Drawing.Size(529, 355);
+            this.mainUserControl1.MinimumSize = new System.Drawing.Size(529, 355);
+            this.mainUserControl1.Name = "mainUserControl1";
+            this.mainUserControl1.Size = new System.Drawing.Size(529, 355);
+            this.mainUserControl1.TabIndex = 0;
             // 
             // MainTabControl
             // 
@@ -189,6 +203,7 @@
             // 
             // ContributionTabPage
             // 
+            this.ContributionTabPage.Controls.Add(this.contributionToGluUserControl1);
             this.ContributionTabPage.Location = new System.Drawing.Point(4, 22);
             this.ContributionTabPage.Name = "ContributionTabPage";
             this.ContributionTabPage.Size = new System.Drawing.Size(529, 355);
@@ -232,6 +247,16 @@
             this.RegistryTabPage.Text = "Registry";
             this.RegistryTabPage.UseVisualStyleBackColor = true;
             // 
+            // contributionToGluUserControl1
+            // 
+            this.contributionToGluUserControl1.DataSource = null;
+            this.contributionToGluUserControl1.Location = new System.Drawing.Point(-3, 0);
+            this.contributionToGluUserControl1.MaximumSize = new System.Drawing.Size(529, 355);
+            this.contributionToGluUserControl1.MinimumSize = new System.Drawing.Size(529, 355);
+            this.contributionToGluUserControl1.Name = "contributionToGluUserControl1";
+            this.contributionToGluUserControl1.Size = new System.Drawing.Size(529, 355);
+            this.contributionToGluUserControl1.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,7 +272,9 @@
             this.Text = "Pdks";
             this.MainMenuStrip.ResumeLayout(false);
             this.MainMenuStrip.PerformLayout();
+            this.MainTabPage.ResumeLayout(false);
             this.MainTabControl.ResumeLayout(false);
+            this.ContributionTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,7 +295,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem addTransactionReasonToolStripMenuItem;
-        private Controls.UsersGridControl UsersGridControl;
         private System.Windows.Forms.TabPage MainTabPage;
         private System.Windows.Forms.TabControl MainTabControl;
         private System.Windows.Forms.TabPage AnnualFeeTabPage;
@@ -277,6 +303,8 @@
         private System.Windows.Forms.TabPage OtherOutcomeTabPage;
         private System.Windows.Forms.TabPage BalanceTabPage;
         private System.Windows.Forms.TabPage RegistryTabPage;
+        private Controls.MainUserControl mainUserControl1;
+        private Controls.ContributionToGluUserControl contributionToGluUserControl1;
     }
 }
 

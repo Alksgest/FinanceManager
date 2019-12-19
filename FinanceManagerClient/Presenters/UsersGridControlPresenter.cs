@@ -5,22 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 
 using FinanceManagerClient.Views;
-using FinanceManagerSDK.Repositories;
+using FinanceManagerSDK.Managers;
 
 namespace FinanceManagerClient.Presenters
 {
-    class UsersGridControlPresenter : Presenter<IUsersView>
+    class UsersGridControlPresenter : Presenter<IGridView>
     {
         public event EventHandler DataSourceUpdated;
 
-        private readonly IUserRepository _repo;
+        private readonly IUserManager _manager;
 
-
-        public UsersGridControlPresenter(IUsersView view) : base(view)
+        public UsersGridControlPresenter(IGridView view) : base(view)
         {
-            _repo = new UserRepository();
+            _manager = new UserManager();
 
-            View.Refresh += OnRefresh;
+            View.RefreshDataSource += OnRefresh;
 
             SetDataSoruce();
         }
@@ -32,7 +31,7 @@ namespace FinanceManagerClient.Presenters
 
         public void SetDataSoruce()
         {           
-            View.DataSource = _repo.GetUsers().ToList();
+            View.DataSource = _manager.GetUsers().ToList();
             DataSourceUpdated?.Invoke(this, EventArgs.Empty);
         }
     }

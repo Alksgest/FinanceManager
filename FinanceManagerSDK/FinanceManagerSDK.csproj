@@ -52,10 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Managers\IncomeTransactionManager.cs" />
+    <Compile Include="Managers\IncomeTransactionProvider.cs" />
     <Compile Include="Managers\ITransactionManager.cs" />
+    <Compile Include="Managers\ITransactionProvider.cs" />
     <Compile Include="Managers\IUserManager.cs" />
-    <Compile Include="Managers\OutcomeTransactionManager.cs" />
+    <Compile Include="Managers\OutcomeTransactionProvider.cs" />
     <Compile Include="Managers\TransactionManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Models\Account.cs" />

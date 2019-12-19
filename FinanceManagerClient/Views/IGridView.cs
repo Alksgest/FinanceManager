@@ -2,9 +2,9 @@
 
 namespace FinanceManagerClient.Views
 {
-    internal interface IUsersView : IView
+    internal interface IGridView : IView
     {
         object DataSource { get; set; }
-        event EventHandler Refresh;
+        event EventHandler RefreshDataSource;
     }
 }
