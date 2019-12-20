@@ -20,9 +20,7 @@ namespace FinanceManagerSDK.Models
         public override bool Equals(object obj)
         {
             return obj is User user &&
-                   Firstname == user.Firstname &&
-                   Lastname == user.Lastname &&
-                   Degree == user.Degree;
+                   Id == user.Id;
         }
 
         public override int GetHashCode()

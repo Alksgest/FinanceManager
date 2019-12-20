@@ -14,6 +14,7 @@ namespace FinanceManagerClient
         public event EventHandler MakeTransaction;
         public event EventHandler AddUser;
         public event EventHandler AddReason;
+        public event EventHandler AddCriteria;
 
         public event EventHandler RefreshNeeded;
 
@@ -64,6 +65,12 @@ namespace FinanceManagerClient
         private void AddTransactionReasonToolStripMenuItemClick(object sender, EventArgs e)
         {
             AddReason?.Invoke(sender, e);
+            RefreshNeeded?.Invoke(sender, e);
+        }
+
+        private void AddSearchCriteriaToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            AddCriteria?.Invoke(sender, e);
             RefreshNeeded?.Invoke(sender, e);
         }
     }

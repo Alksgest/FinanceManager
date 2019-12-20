@@ -70,11 +70,19 @@
     <Compile Include="Controls\MainUserControl.Designer.cs">
       <DependentUpon>MainUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateCriteriaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateCriteriaForm.Designer.cs">
+      <DependentUpon>CreateCriteriaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presenters\ContributionToGluPresenter.cs" />
+    <Compile Include="Presenters\CreateCriteriaPresenter.cs" />
     <Compile Include="Presenters\MainSettingsUserControlPresenter.cs" />
     <Compile Include="Presenters\UsersGridControlPresenter.cs" />
     <Compile Include="Args\DateRangeEventArgs.cs" />
     <Compile Include="Util\GlobalSettings.cs" />
+    <Compile Include="Views\ICreateCriteriaView.cs" />
     <Compile Include="Views\ISettingsView.cs" />
     <Compile Include="Views\IGridView.cs" />
     <Compile Include="Controls\UsersGridControl.cs">
@@ -142,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateCriteriaForm.resx">
+      <DependentUpon>CreateCriteriaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MakeTransactionForm.resx">
       <DependentUpon>MakeTransactionForm.cs</DependentUpon>

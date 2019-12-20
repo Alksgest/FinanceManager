@@ -9,6 +9,7 @@ using FinanceManagerClient.Util;
 using FinanceManagerClient.Views;
 
 using FinanceManagerSDK.Managers;
+using FinanceManagerSDK.Models;
 
 namespace FinanceManagerClient.Presenters
 {
@@ -16,13 +17,17 @@ namespace FinanceManagerClient.Presenters
     {
         private const int _september = 9;
 
-        private readonly ITransactionManager _manager;
+        private readonly ITransactionManager _transactionManager;
+        private readonly ISearchCriteriaManager _searchCriteriaManager;
+
+        public IEnumerable<SearchCriteria> SearchCriteria => _searchCriteriaManager.GetCriterias();
 
         public MainSettingsUserControlPresenter(ISettingsView view) : base(view)
         {
             View.TimePeriodChanged += OnTimePeriodChanged;
 
-            _manager = new TransactionManager();
+            _transactionManager = new TransactionManager();
+            _searchCriteriaManager = new SearchCriteriaManager();
         }
 
         public String[] GetStringsForButtons()
@@ -44,8 +49,8 @@ namespace FinanceManagerClient.Presenters
         {
             return new DateRangeEventArgs
             {
-                DateFrom = _manager.GetFirstTransactionTime(),
-                DateTo = _manager.GetLastTransactionTime()
+                DateFrom = _transactionManager.GetFirstTransactionTime(),
+                DateTo = _transactionManager.GetLastTransactionTime()
             };
         }
 

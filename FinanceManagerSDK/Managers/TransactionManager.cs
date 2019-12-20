@@ -8,8 +8,8 @@ namespace FinanceManagerSDK.Managers
 {
     public class TransactionManager : ITransactionManager
     {
-        private readonly ITransactionProvider _incomeTransactionManager;
-        private readonly ITransactionProvider _outcomeTransactionManager;
+        private readonly ITransactionProvider _incomeTransactionProvider;
+        private readonly ITransactionProvider _outcomeTransactionProvider;
 
         public event Action<TransactionEventArgs> TransactionStarted;
         public event Action<TransactionEventArgs> TransactionDone; 
@@ -17,8 +17,8 @@ namespace FinanceManagerSDK.Managers
 
         public TransactionManager()
         {
-            _incomeTransactionManager = new IncomeTransactionProvider();
-            _outcomeTransactionManager = new OutcomeTransactionProvider();
+            _incomeTransactionProvider = new IncomeTransactionProvider();
+            _outcomeTransactionProvider = new OutcomeTransactionProvider();
         }
 
         public DateTime GetFirstTransactionTime()
@@ -32,18 +32,18 @@ namespace FinanceManagerSDK.Managers
 
         public TransactionManager(ITransactionProvider itm, ITransactionProvider otm)
         {
-            _incomeTransactionManager = itm;
-            _outcomeTransactionManager = otm;
+            _incomeTransactionProvider = itm;
+            _outcomeTransactionProvider = otm;
         }
 
-        public IEnumerable<Transaction> GetIncomeTransactions()
+        private IEnumerable<Transaction> GetIncomeTransactions()
         {
-            return _incomeTransactionManager.GetTransactions();
+            return _incomeTransactionProvider.GetTransactions();
         }
 
-        public IEnumerable<Transaction> GetOutcomeTransactions()
+        private IEnumerable<Transaction> GetOutcomeTransactions()
         {
-            return _outcomeTransactionManager.GetTransactions();
+            return _outcomeTransactionProvider.GetTransactions();
         }
 
         public IEnumerable<Transaction> GetAllTransactions()
@@ -51,6 +51,39 @@ namespace FinanceManagerSDK.Managers
             var income = GetIncomeTransactions();
             var outcome = GetOutcomeTransactions();
             return income.Concat(outcome);
+        }
+
+        public IEnumerable<Transaction> GetTransactions(SearchCriteria criteria)
+        {
+            var c = criteria;
+
+            IEnumerable<Transaction> trs;
+            switch (c.TransactionType)
+            {
+                case TransactionType.Income:
+                    trs = GetIncomeTransactions();
+                    break;
+                case TransactionType.Outcome:
+                    trs = GetOutcomeTransactions();
+                    break;
+                default:
+                    {
+                        var income = GetIncomeTransactions();
+                        var outcome = GetOutcomeTransactions();
+                        trs = income.Concat(outcome);
+                    }
+                    break;
+            }
+
+            var res = trs
+                .Where(t => c.Amount != null ? t.Amount == c.Amount : true)
+                .Where(t => c.Currency != null ? t.Currency == c.Currency : true)
+                .Where(t => c.DateFrom != null ? t.Date > c.DateFrom : true)
+                .Where(t => c.DateTo != null ? t.Date < c.DateTo : true)
+                .Where(t => c.Reason != null ? t.Reason.Equals(c.Reason) : true)
+                .Where(t => c.TransactionOwner != null ? t.TransactionOwner.Equals(c.TransactionOwner) : true);
+
+            return res;
         }
 
         public void MakeTransaction(Transaction transaction)
@@ -67,14 +100,16 @@ namespace FinanceManagerSDK.Managers
             switch (transaction.Type)
             {
                 case TransactionType.Income:
-                    _incomeTransactionManager.AddTransaction(transaction);
+                    _incomeTransactionProvider.AddTransaction(transaction);
                     break;
                 case TransactionType.Outcome:
-                    _outcomeTransactionManager.AddTransaction(transaction);
+                    _outcomeTransactionProvider.AddTransaction(transaction);
                     break;
                 default:
                     break;
             }
         }
+
+
     }
 }

@@ -20,7 +20,9 @@ namespace FinanceManagerClient.Controls
 
         private readonly MainSettingsUserControlPresenter _presenter;
 
-        public MainUserControl()
+        private readonly IMainView _parent;
+
+        public MainUserControl(IMainView parent)
         {
             InitializeComponent();
 
@@ -29,10 +31,18 @@ namespace FinanceManagerClient.Controls
             InvokeInitialize(EventArgs.Empty);
         }
 
+
         private void InvokeInitialize(EventArgs args)
         {
             Initialize?.Invoke(this, args);
             SetNamesForButtons();
+            InitCriteriaComboBox();
+        }
+
+        private void InitCriteriaComboBox()
+        {
+            CriteriaComboBox.Items.Add("");
+            CriteriaComboBox.Items.AddRange(_presenter.SearchCriteria.ToArray());
         }
 
         private void SetNamesForButtons()
@@ -40,10 +50,6 @@ namespace FinanceManagerClient.Controls
             var strings = _presenter.GetStringsForButtons();
             CurrentYearButton.Text = strings[0];
             NextYearButton.Text = strings[1];
-        }
-
-        private void MainUserControl_Load(object sender, EventArgs e)
-        {
         }
 
         private void CurrentYearButtonClick(object sender, EventArgs e)

@@ -9,6 +9,7 @@ namespace FinanceManagerClient.Views
         event EventHandler MakeTransaction;
         event EventHandler AddReason;
         event EventHandler AddUser;
+        event EventHandler AddCriteria;
 
         event EventHandler RefreshNeeded;
     }

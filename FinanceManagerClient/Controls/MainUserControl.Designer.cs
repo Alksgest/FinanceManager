@@ -33,6 +33,7 @@
             this.NextYearButton = new System.Windows.Forms.Button();
             this.TotalButton = new System.Windows.Forms.Button();
             this.TimeRangeLabel = new System.Windows.Forms.Label();
+            this.CriteriaComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,10 +84,19 @@
             this.TimeRangeLabel.TabIndex = 4;
             this.TimeRangeLabel.Text = "Time Range ";
             // 
+            // CriteriaComboBox
+            // 
+            this.CriteriaComboBox.FormattingEnabled = true;
+            this.CriteriaComboBox.Location = new System.Drawing.Point(373, 283);
+            this.CriteriaComboBox.Name = "CriteriaComboBox";
+            this.CriteriaComboBox.Size = new System.Drawing.Size(121, 21);
+            this.CriteriaComboBox.TabIndex = 5;
+            // 
             // MainUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CriteriaComboBox);
             this.Controls.Add(this.TimeRangeLabel);
             this.Controls.Add(this.TotalButton);
             this.Controls.Add(this.NextYearButton);
@@ -96,7 +106,6 @@
             this.MinimumSize = new System.Drawing.Size(529, 355);
             this.Name = "MainUserControl";
             this.Size = new System.Drawing.Size(529, 355);
-            this.Load += new System.EventHandler(this.MainUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -110,5 +119,6 @@
         private System.Windows.Forms.Button NextYearButton;
         private System.Windows.Forms.Button TotalButton;
         private System.Windows.Forms.Label TimeRangeLabel;
+        private System.Windows.Forms.ComboBox CriteriaComboBox;
     }
 }

@@ -11,6 +11,17 @@ namespace FinanceManagerSDK.Models
 
         public String LongDesctiption { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            return obj is TransactionReason reason &&
+                   Id == reason.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return 2108858624 + Id.GetHashCode();
+        }
+
         public override string ToString()
         {
             return ShortDesctiption;

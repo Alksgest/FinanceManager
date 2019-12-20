@@ -11,9 +11,7 @@ namespace FinanceManagerSDK.Managers
 
         DateTime GetFirstTransactionTime();
         DateTime GetLastTransactionTime();
-        IEnumerable<Transaction> GetIncomeTransactions();
-        IEnumerable<Transaction> GetOutcomeTransactions();
-        IEnumerable<Transaction> GetAllTransactions();
+        IEnumerable<Transaction> GetTransactions(SearchCriteria criteria);
         void MakeTransaction(Transaction transaction);
     }
 }

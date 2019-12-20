@@ -17,6 +17,15 @@ namespace FinanceManagerClient.Presenters
             this.View.MakeTransaction += OnMakeTransactionClicked;
             this.View.AddUser += OnAddUser;
             this.View.AddReason += OnAddReason;
+            this.View.AddCriteria += OnAddCriteria;
+        }
+
+        private void OnAddCriteria(object sender, EventArgs e)
+        {
+            using(var form = new CreateCriteriaForm())
+            {
+                form.ShowDialog();
+            }
         }
 
         private void OnAddReason(object sender, EventArgs e)

@@ -37,6 +37,7 @@
             this.increaseUserRankToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.addTransactionReasonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addSearchCriteriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatisticToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,11 +47,11 @@
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.AnnualFeeTabPage = new System.Windows.Forms.TabPage();
             this.ContributionTabPage = new System.Windows.Forms.TabPage();
+            this.contributionToGluUserControl1 = new FinanceManagerClient.Controls.ContributionToGluUserControl();
             this.OtherIncomeTabPage = new System.Windows.Forms.TabPage();
             this.OtherOutcomeTabPage = new System.Windows.Forms.TabPage();
             this.BalanceTabPage = new System.Windows.Forms.TabPage();
             this.RegistryTabPage = new System.Windows.Forms.TabPage();
-            this.contributionToGluUserControl1 = new FinanceManagerClient.Controls.ContributionToGluUserControl(this);
             this.MainMenuStrip.SuspendLayout();
             this.MainTabPage.SuspendLayout();
             this.MainTabControl.SuspendLayout();
@@ -88,7 +89,8 @@
             this.addUserToolStripMenuItem,
             this.increaseUserRankToolStripMenuItem,
             this.toolStripSeparator2,
-            this.addTransactionReasonToolStripMenuItem});
+            this.addTransactionReasonToolStripMenuItem,
+            this.addSearchCriteriaToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -129,6 +131,13 @@
             this.addTransactionReasonToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.addTransactionReasonToolStripMenuItem.Text = "Add Transaction Reason";
             this.addTransactionReasonToolStripMenuItem.Click += new System.EventHandler(this.AddTransactionReasonToolStripMenuItemClick);
+            // 
+            // addSearchCriteriaToolStripMenuItem
+            // 
+            this.addSearchCriteriaToolStripMenuItem.Name = "addSearchCriteriaToolStripMenuItem";
+            this.addSearchCriteriaToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.addSearchCriteriaToolStripMenuItem.Text = "Add Search Criteria";
+            this.addSearchCriteriaToolStripMenuItem.Click += new System.EventHandler(this.AddSearchCriteriaToolStripMenuItemClick);
             // 
             // StatisticToolStripMenuItem
             // 
@@ -211,6 +220,16 @@
             this.ContributionTabPage.Text = "Contribution to the GLoU";
             this.ContributionTabPage.UseVisualStyleBackColor = true;
             // 
+            // contributionToGluUserControl1
+            // 
+            this.contributionToGluUserControl1.DataSource = null;
+            this.contributionToGluUserControl1.Location = new System.Drawing.Point(-3, 0);
+            this.contributionToGluUserControl1.MaximumSize = new System.Drawing.Size(529, 355);
+            this.contributionToGluUserControl1.MinimumSize = new System.Drawing.Size(529, 355);
+            this.contributionToGluUserControl1.Name = "contributionToGluUserControl1";
+            this.contributionToGluUserControl1.Size = new System.Drawing.Size(529, 355);
+            this.contributionToGluUserControl1.TabIndex = 0;
+            // 
             // OtherIncomeTabPage
             // 
             this.OtherIncomeTabPage.Location = new System.Drawing.Point(4, 22);
@@ -246,16 +265,6 @@
             this.RegistryTabPage.TabIndex = 6;
             this.RegistryTabPage.Text = "Registry";
             this.RegistryTabPage.UseVisualStyleBackColor = true;
-            // 
-            // contributionToGluUserControl1
-            // 
-            this.contributionToGluUserControl1.DataSource = null;
-            this.contributionToGluUserControl1.Location = new System.Drawing.Point(-3, 0);
-            this.contributionToGluUserControl1.MaximumSize = new System.Drawing.Size(529, 355);
-            this.contributionToGluUserControl1.MinimumSize = new System.Drawing.Size(529, 355);
-            this.contributionToGluUserControl1.Name = "contributionToGluUserControl1";
-            this.contributionToGluUserControl1.Size = new System.Drawing.Size(529, 355);
-            this.contributionToGluUserControl1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -305,6 +314,7 @@
         private System.Windows.Forms.TabPage RegistryTabPage;
         private Controls.MainUserControl mainUserControl1;
         private Controls.ContributionToGluUserControl contributionToGluUserControl1;
+        private System.Windows.Forms.ToolStripMenuItem addSearchCriteriaToolStripMenuItem;
     }
 }
 
