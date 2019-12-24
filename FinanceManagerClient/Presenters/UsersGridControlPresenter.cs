@@ -19,8 +19,6 @@ namespace FinanceManagerClient.Presenters
         {
             _manager = new UserManager();
 
-            View.RefreshDataSource += OnRefresh;
-
             SetDataSoruce();
         }
 
@@ -31,7 +29,7 @@ namespace FinanceManagerClient.Presenters
 
         public void SetDataSoruce()
         {           
-            View.DataSource = _manager.GetUsers().ToList();
+            View.TransactionsDataSource = _manager.GetUsers().ToList();
             DataSourceUpdated?.Invoke(this, EventArgs.Empty);
         }
     }

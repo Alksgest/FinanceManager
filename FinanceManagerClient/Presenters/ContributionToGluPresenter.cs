@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
+using FinanceManagerClient.Util;
 using FinanceManagerClient.Views;
 
 using FinanceManagerSDK.Managers;
@@ -20,14 +19,21 @@ namespace FinanceManagerClient.Presenters
         public ContributionToGluPresenter(IGridView view) : base(view)
         {
             _manager = new TransactionManager();
-            View.RefreshDataSource += OnRefresh;
 
-            SetDataSoruce();
+            View.RefreshDataSoruceOnFocus += RefreshDataSource;
+
+            GlobalSettings.Instance.OnTransactionAdded += OnTransactionsChanged;
         }
 
-        private void OnRefresh(object sender, EventArgs e)
+        private void OnTransactionsChanged(object sender, EventArgs e)
+        {
+            RefreshDataSource(sender, e);
+        }
+
+        private void RefreshDataSource(object sender, EventArgs e)
         {
             SetDataSoruce();
+            DataSourceUpdated?.Invoke(sender, e);
         }
 
         public void SetDataSoruce()
@@ -37,7 +43,7 @@ namespace FinanceManagerClient.Presenters
                 TransactionType = TransactionType.Outcome,
             };
 
-            View.DataSource = _manager.GetTransactions(criteria).ToList();
+            View.TransactionsDataSource = _manager.GetTransactions(criteria).ToList();
             DataSourceUpdated?.Invoke(this, EventArgs.Empty);
         }
     }

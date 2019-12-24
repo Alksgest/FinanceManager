@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace FinanceManagerClient.Presenters
     {
         private const int _september = 9;
 
+        public event EventHandler DataSourceUpdated;
+
         private readonly ITransactionManager _transactionManager;
         private readonly ISearchCriteriaManager _searchCriteriaManager;
 
@@ -28,6 +31,33 @@ namespace FinanceManagerClient.Presenters
 
             _transactionManager = new TransactionManager();
             _searchCriteriaManager = new SearchCriteriaManager();
+
+            GlobalSettings.Instance.PropertyChanged += GlobalSettingsPropertyChanged;
+        }
+
+        private void GlobalSettingsPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            var enumValue = 
+                (GlobalSettingsProperties)Enum.Parse(typeof(GlobalSettingsProperties), e.PropertyName);
+
+            switch (enumValue)
+            {
+                case GlobalSettingsProperties.CurrentDateRange:
+                    break;
+                case GlobalSettingsProperties.TransactionReasons:
+                    break;
+                case GlobalSettingsProperties.SearchCriteria:
+                    View.CriteriaDataSource = GlobalSettings.Instance.SearchCriteria.ToArray();
+                    break;
+                case GlobalSettingsProperties.Users:
+                    break;
+                case GlobalSettingsProperties.Transactions:
+                    break;
+                default:
+                    break;
+            }
+
+            DataSourceUpdated?.Invoke(sender, e);
         }
 
         public String[] GetStringsForButtons()
@@ -94,8 +124,7 @@ namespace FinanceManagerClient.Presenters
 
         private void OnTimePeriodChanged(object sender, DateRangeEventArgs e)
         {
-            var settings = GlobalSettings.Instance;
-            settings.CurrentDateRange = Tuple.Create(e.DateFrom, e.DateTo);
+            GlobalSettings.Instance.CurrentDateRange = Tuple.Create(e.DateFrom, e.DateTo);
         }
     }
 }

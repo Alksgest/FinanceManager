@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
+using FinanceManagerClient.Util;
 using FinanceManagerClient.Views;
 
 using FinanceManagerSDK.Managers;
@@ -33,6 +30,8 @@ namespace FinanceManagerClient.Presenters
         private void OnCreateCriteria(object sender, SearchCriteria cr)
         {
             _criteriaManager.AddCriteria(cr);
+
+            GlobalSettings.Instance.SearchCriteria = _criteriaManager.GetCriterias();
         }
     }
 }

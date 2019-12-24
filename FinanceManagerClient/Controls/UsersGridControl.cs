@@ -10,8 +10,9 @@ namespace FinanceManagerClient.Controls
     {
         public event EventHandler Initialize;
         public event EventHandler RefreshDataSource;
+        public event EventHandler RefreshDataSoruceOnFocus;
 
-        public object DataSource { get; set; }
+        public object TransactionsDataSource { get; set; }
 
         private readonly UsersGridControlPresenter _presenter;
 
@@ -39,7 +40,7 @@ namespace FinanceManagerClient.Controls
 
         private void OnDataSourceUpdated(object sender, EventArgs e)
         {
-            UsersDataGridView.DataSource = DataSource;
+            UsersDataGridView.DataSource = TransactionsDataSource;
         }
 
         public void InvokeInitialize(EventArgs e) => Initialize?.Invoke(this, e);

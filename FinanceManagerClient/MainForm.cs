@@ -16,6 +16,8 @@ namespace FinanceManagerClient
         public event EventHandler AddReason;
         public event EventHandler AddCriteria;
 
+        public event EventHandler TabIndexChanged;
+
         public event EventHandler RefreshNeeded;
 
         private readonly Form _loginForm;
@@ -34,6 +36,19 @@ namespace FinanceManagerClient
 
             FormClosed += OnMainFormFormClosed;
 
+            MainTabControl.TabIndexChanged += OnTabIndexChanged;
+            MainTabControl.SelectedIndexChanged += SelectedIndexChanged;
+
+        }
+
+        private void SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TabIndexChanged?.Invoke(sender, e);
+        }
+
+        private void OnTabIndexChanged(object sender, EventArgs e)
+        {
+            TabIndexChanged?.Invoke(sender, e);
         }
 
         private void OnMainFormFormClosed(object sender, FormClosedEventArgs e)

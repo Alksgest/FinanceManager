@@ -1,4 +1,6 @@
-﻿namespace FinanceManagerClient
+﻿using FinanceManagerClient.Views;
+
+namespace FinanceManagerClient
 {
     partial class MainForm
     {
@@ -43,11 +45,11 @@
             this.pDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainTabPage = new System.Windows.Forms.TabPage();
-            this.mainUserControl1 = new FinanceManagerClient.Controls.MainUserControl();
+            this.mainUserControl1 = new FinanceManagerClient.Controls.MainSettingsUserControl();
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.AnnualFeeTabPage = new System.Windows.Forms.TabPage();
             this.ContributionTabPage = new System.Windows.Forms.TabPage();
-            this.contributionToGluUserControl1 = new FinanceManagerClient.Controls.ContributionToGluUserControl();
+            this.contributionToGluUserControl1 = new FinanceManagerClient.Controls.ContributionToGluUserControl(this);
             this.OtherIncomeTabPage = new System.Windows.Forms.TabPage();
             this.OtherOutcomeTabPage = new System.Windows.Forms.TabPage();
             this.BalanceTabPage = new System.Windows.Forms.TabPage();
@@ -222,7 +224,7 @@
             // 
             // contributionToGluUserControl1
             // 
-            this.contributionToGluUserControl1.DataSource = null;
+            this.contributionToGluUserControl1.TransactionsDataSource = null;
             this.contributionToGluUserControl1.Location = new System.Drawing.Point(-3, 0);
             this.contributionToGluUserControl1.MaximumSize = new System.Drawing.Size(529, 355);
             this.contributionToGluUserControl1.MinimumSize = new System.Drawing.Size(529, 355);
@@ -312,7 +314,7 @@
         private System.Windows.Forms.TabPage OtherOutcomeTabPage;
         private System.Windows.Forms.TabPage BalanceTabPage;
         private System.Windows.Forms.TabPage RegistryTabPage;
-        private Controls.MainUserControl mainUserControl1;
+        private Controls.MainSettingsUserControl mainUserControl1;
         private Controls.ContributionToGluUserControl contributionToGluUserControl1;
         private System.Windows.Forms.ToolStripMenuItem addSearchCriteriaToolStripMenuItem;
     }

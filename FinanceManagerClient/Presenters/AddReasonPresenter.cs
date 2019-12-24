@@ -1,28 +1,31 @@
 ﻿using System.Windows.Forms;
 
+using FinanceManagerClient.Util;
 using FinanceManagerClient.Views;
 
+using FinanceManagerSDK.Managers;
 using FinanceManagerSDK.Models;
-using FinanceManagerSDK.Repositories;
 
 namespace FinanceManagerClient.Presenters
 {
     class AddReasonPresenter : Presenter<IAddReasonView>
     {
-        private readonly IReasonRepository _repo;
+        private readonly ITransactionReasonManager _manager;
 
         public AddReasonPresenter(IAddReasonView view) : base(view)
         {
             View.TransactionReasonAdd += OnTransactionReasonAdd;
 
-            _repo = new ReasonRepository();
+            _manager = new TransactionReasonManager();
         }
 
         private void OnTransactionReasonAdd(object sender, TransactionReason e)
         {
-            _repo.AddReason(e);
+            _manager.AddReason(e);
 
             (this.View as Form).Close();
+
+            GlobalSettings.Instance.TransactionReasons = _manager.GetReasons();
         }
     }
 }

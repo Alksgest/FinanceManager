@@ -16,15 +16,15 @@ namespace FinanceManagerClient.Controls
     public partial class ContributionToGluUserControl : UserControl, IGridView
     {
         public event EventHandler Initialize;
-        public event EventHandler RefreshDataSource;
+        public event EventHandler RefreshDataSoruceOnFocus;
 
-        public object DataSource { get; set; }
-
-        private readonly IMainView _parent;
+        public object TransactionsDataSource { get; set; }
 
         private readonly ContributionToGluPresenter _presenter;
 
-        public ContributionToGluUserControl(Form view)
+        private readonly Form _parent;
+
+        public ContributionToGluUserControl(Form parent)
         {
             InitializeComponent();
 
@@ -32,28 +32,25 @@ namespace FinanceManagerClient.Controls
 
             _presenter = new ContributionToGluPresenter(this);
             _presenter.DataSourceUpdated += OnDataSourceUpdated;
-            _presenter.SetDataSoruce();
 
-            _parent = view as IMainView;
+            _parent = parent;
 
             if (_parent != null)
-                _parent.RefreshNeeded += OnRefreshNeeded;
+            {
+                var mainForm = (_parent as MainForm);
+                mainForm.TabIndexChanged += MainFormTabIndexChanged;
+            }
         }
 
-        private void OnRefreshNeeded(object sender, EventArgs e)
+        private void MainFormTabIndexChanged(object sender, EventArgs e)
         {
-            RefreshDataSource?.Invoke(sender, e);
+            RefreshDataSoruceOnFocus?.Invoke(sender, e);
         }
+
         private void OnDataSourceUpdated(object sender, EventArgs e)
         {
-            ContributionDataGridView.DataSource = DataSource;
-        }
-
-        public ContributionToGluUserControl()
-        {
-            InitializeComponent();
-
-            InvokeInitialize(EventArgs.Empty);
+            ContributionDataGridView.DataSource = TransactionsDataSource;
+            ContributionDataGridView.Refresh();
         }
 
         private void InvokeInitialize(EventArgs args) => Initialize?.Invoke(this, args);

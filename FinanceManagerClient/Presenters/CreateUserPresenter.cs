@@ -1,25 +1,27 @@
-﻿using FinanceManagerClient.Views;
+﻿using FinanceManagerClient.Util;
+using FinanceManagerClient.Views;
 
+using FinanceManagerSDK.Managers;
 using FinanceManagerSDK.Models;
-using FinanceManagerSDK.Repositories;
 
 namespace FinanceManagerClient.Presenters
 {
     class CreateUserPresenter : Presenter<ICreateUserView>
     {
 
-        private readonly IUserRepository _repo;
+        private readonly IUserManager _manager;
 
         public CreateUserPresenter(ICreateUserView view) : base(view)
         {
             View.UserCreation += OnUserCreation;
 
-            _repo = new UserRepository();
+            _manager = new UserManager();
         }
 
         private void OnUserCreation(object sender, User e)
         {
-            _repo.AddUser(e);
+            _manager.AddUser(e);
+            GlobalSettings.Instance.Users = _manager.GetUsers();
         }
     }
 }

@@ -13,24 +13,31 @@ using FinanceManagerClient.Presenters;
 
 namespace FinanceManagerClient.Controls
 {
-    public partial class MainUserControl : UserControl, ISettingsView
+    public partial class MainSettingsUserControl : UserControl, ISettingsView
     {
         public event EventHandler Initialize;
         public event EventHandler<Args.DateRangeEventArgs> TimePeriodChanged;
+        public object[] CriteriaDataSource { get; set; }
 
         private readonly MainSettingsUserControlPresenter _presenter;
 
-        private readonly IMainView _parent;
-
-        public MainUserControl(IMainView parent)
+        public MainSettingsUserControl()
         {
             InitializeComponent();
 
             _presenter = new MainSettingsUserControlPresenter(this);
+            _presenter.DataSourceUpdated += OnDataSourceUpdated;
+
 
             InvokeInitialize(EventArgs.Empty);
         }
 
+        private void OnDataSourceUpdated(object sender, EventArgs e)
+        {
+            this.CriteriaComboBox.Items.Clear();
+            this.CriteriaComboBox.Items.Add("");
+            this.CriteriaComboBox.Items.AddRange(CriteriaDataSource);
+        }
 
         private void InvokeInitialize(EventArgs args)
         {

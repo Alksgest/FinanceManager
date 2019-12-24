@@ -12,5 +12,6 @@ namespace FinanceManagerClient.Views
     public interface ISettingsView : IView
     {
         event EventHandler<DateRangeEventArgs> TimePeriodChanged;
+        object[] CriteriaDataSource { get; set; }
     }
 }

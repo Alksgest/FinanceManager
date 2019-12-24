@@ -1,6 +1,6 @@
 ﻿namespace FinanceManagerClient.Controls
 {
-    partial class MainUserControl
+    partial class MainSettingsUserControl
     {
         /// <summary> 
         /// Required designer variable.
