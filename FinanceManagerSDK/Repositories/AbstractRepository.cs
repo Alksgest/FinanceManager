@@ -63,6 +63,13 @@ namespace FinanceManagerSDK.Repositories
             }
         }
 
+        protected void RemoveObject(T obj)
+        {
+            var collection = _db.GetCollection<T>();
+
+            collection.Delete(el => el.Equals(obj));
+        }
+
         #region IDisposable Support
         private bool disposedValue = false; 
 

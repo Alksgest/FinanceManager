@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using FinanceManagerClient.Views;
 using FinanceManagerClient.Presenters;
+using FinanceManagerSDK.Models;
 
 namespace FinanceManagerClient.Controls
 {
@@ -40,6 +41,13 @@ namespace FinanceManagerClient.Controls
                 var mainForm = (_parent as MainForm);
                 mainForm.TabIndexChanged += MainFormTabIndexChanged;
             }
+            InitDataGridView();
+        }
+
+        private void InitDataGridView()
+        {
+            ContributionDataGridView.AutoGenerateColumns = false;
+            ContributionDataGridView.DataError += ContributionDataGridViewDataError;
         }
 
         private void MainFormTabIndexChanged(object sender, EventArgs e)
@@ -49,11 +57,96 @@ namespace FinanceManagerClient.Controls
 
         private void OnDataSourceUpdated(object sender, EventArgs e)
         {
-            ContributionDataGridView.DataSource = TransactionsDataSource;
-            ContributionDataGridView.Refresh();
+            GenerateTable();
+        }
+
+        private void GenerateTable()
+        {
+            if (TransactionsDataSource != null)
+            {
+                ContributionDataGridView.Columns.Clear();
+
+                DataTable dt = InitDataTable();
+
+                InitColumns();
+                AddItemsToDataTable(dt);
+
+                ContributionDataGridView.DataSource = dt;
+            }
+        }
+
+        private void AddItemsToDataTable(DataTable dt)
+        {
+            var trs = TransactionsDataSource as IEnumerable<Transaction>;
+
+            foreach (var tr in trs)
+            {
+                var row = dt.NewRow();
+                row.SetField(0, tr.TransactionOwner.ToString());
+                row.SetField(1, tr.Amount);
+                row.SetField(2, tr.Currency);
+                row.SetField(3, tr.Date);
+                row.SetField(4, tr.Comment);
+                dt.Rows.Add(row);
+            }
+        }
+
+        private static DataTable InitDataTable()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("TransactionOwner", typeof(String));
+            dt.Columns.Add("Amount", typeof(Decimal));
+            dt.Columns.Add("Currency", typeof(Currency));
+            dt.Columns.Add("Date", typeof(DateTime));
+            dt.Columns.Add("Comment", typeof(String));
+            return dt;
+        }
+
+        private void InitColumns()
+        {
+            DataGridViewTextBoxColumn name = new DataGridViewTextBoxColumn();
+            name.HeaderText = "Name";
+            name.DataPropertyName = "TransactionOwner";
+
+            DataGridViewTextBoxColumn amount = new DataGridViewTextBoxColumn();
+            amount.HeaderText = "Amount";
+            amount.DataPropertyName = "Amount";
+
+            DataGridViewComboBoxColumn currency = new DataGridViewComboBoxColumn();
+            var currensies = Enum.GetValues(typeof(Currency));
+            currency.DataSource = currensies;
+            currency.HeaderText = "Currency";
+            currency.DataPropertyName = "Currency";
+
+            DataGridViewTextBoxColumn date = new DataGridViewTextBoxColumn();
+            date.HeaderText = "Date";
+            date.DataPropertyName = "Date";
+
+            DataGridViewTextBoxColumn comment = new DataGridViewTextBoxColumn();
+            comment.HeaderText = "Comment";
+            comment.DataPropertyName = "Comment";
+
+            ContributionDataGridView.Columns.AddRange(name, amount, currency, date, comment);
+        }
+
+        private void ContributionDataGridViewDataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            Console.WriteLine(e.Context.ToString());
         }
 
         private void InvokeInitialize(EventArgs args) => Initialize?.Invoke(this, args);
+
+        private void EditCheckBoxCheckedChanged(object sender, EventArgs e)
+        {
+            ChangeEditMode(EditCheckBox.Checked);
+        }
+
+        private void ChangeEditMode(bool mode)
+        {
+            foreach (var c in ContributionDataGridView.Columns)
+            {
+            }
+        }
 
     }
 }

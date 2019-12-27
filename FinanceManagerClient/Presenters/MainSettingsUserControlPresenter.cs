@@ -47,7 +47,7 @@ namespace FinanceManagerClient.Presenters
                 case GlobalSettingsProperties.TransactionReasons:
                     break;
                 case GlobalSettingsProperties.SearchCriteria:
-                    View.CriteriaDataSource = GlobalSettings.Instance.SearchCriteria.ToArray();
+                    //UpdateDataSoruce();
                     break;
                 case GlobalSettingsProperties.Users:
                     break;
@@ -57,7 +57,13 @@ namespace FinanceManagerClient.Presenters
                     break;
             }
 
+            UpdateDataSoruce();
             DataSourceUpdated?.Invoke(sender, e);
+        }
+
+        private void UpdateDataSoruce()
+        {
+            View.CriteriaDataSource = GlobalSettings.Instance.SearchCriteria.ToArray();
         }
 
         public String[] GetStringsForButtons()

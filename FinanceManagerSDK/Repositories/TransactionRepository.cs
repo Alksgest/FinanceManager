@@ -19,6 +19,16 @@ namespace FinanceManagerSDK.Repositories
             this.AddObject(tr);
         }
 
+        public void UpdateTransaction(Transaction tr)
+        {
+            this.UpdateObject(tr);
+        }
+
+        public void RemoveTransaction(Transaction tr)
+        {
+            this.UpdateObject(tr);
+        }
+
     }
 
 }

@@ -26,6 +26,11 @@ namespace FinanceManagerSDK.Repositories
             this.UpdateObject(r);
         }
 
+        public void RemoveReason(TransactionReason r)
+        {
+            this.RemoveObject(r);
+        }
+
     }
 
 }

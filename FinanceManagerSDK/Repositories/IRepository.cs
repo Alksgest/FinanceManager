@@ -2,11 +2,12 @@
 
 namespace FinanceManagerSDK.Repositories
 {
-    public interface ITransactionRepository<T>
+    public interface IRepository<T>
     {
         IEnumerable<T> GetObjects();
 
         void AddObject(T obj);
+        void RemoveObject(T obj);
         void UpdateObject(T obj);
     }
 

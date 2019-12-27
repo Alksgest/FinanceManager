@@ -3,13 +3,14 @@ using System.Linq;
 using System.Collections.Generic;
 
 using FinanceManagerSDK.Models;
+using FinanceManagerSDK.Repositories;
 
 namespace FinanceManagerSDK.Managers
 {
     public class TransactionManager : ITransactionManager
     {
-        private readonly ITransactionProvider _incomeTransactionProvider;
-        private readonly ITransactionProvider _outcomeTransactionProvider;
+
+        private readonly ITransactionRepository _repo;
 
         public event Action<TransactionEventArgs> TransactionStarted;
         public event Action<TransactionEventArgs> TransactionDone; 
@@ -17,8 +18,7 @@ namespace FinanceManagerSDK.Managers
 
         public TransactionManager()
         {
-            _incomeTransactionProvider = new IncomeTransactionProvider();
-            _outcomeTransactionProvider = new OutcomeTransactionProvider();
+            _repo = new TransactionRepository();
         }
 
         public DateTime GetFirstTransactionTime()
@@ -30,20 +30,14 @@ namespace FinanceManagerSDK.Managers
             return GetAllTransactions().Max(tr => tr.Date).GetValueOrDefault();
         }
 
-        public TransactionManager(ITransactionProvider itm, ITransactionProvider otm)
-        {
-            _incomeTransactionProvider = itm;
-            _outcomeTransactionProvider = otm;
-        }
-
         private IEnumerable<Transaction> GetIncomeTransactions()
         {
-            return _incomeTransactionProvider.GetTransactions();
+            return _repo.GetTransactions().Where(tr => tr.Type == TransactionType.Income);
         }
 
         private IEnumerable<Transaction> GetOutcomeTransactions()
         {
-            return _outcomeTransactionProvider.GetTransactions();
+            return _repo.GetTransactions().Where(tr => tr.Type == TransactionType.Outcome);
         }
 
         public IEnumerable<Transaction> GetAllTransactions()
@@ -95,19 +89,17 @@ namespace FinanceManagerSDK.Managers
             TransactionDone?.Invoke(new TransactionEventArgs(transaction));
         }
 
+        public void UpdateTransactions(IEnumerable<Transaction> trs)
+        {
+            foreach(var tr in trs)
+            {
+                _repo.UpdateTransaction(tr);
+            }
+        }
+
         private void ProcessTransaction(Transaction transaction)
         {
-            switch (transaction.Type)
-            {
-                case TransactionType.Income:
-                    _incomeTransactionProvider.AddTransaction(transaction);
-                    break;
-                case TransactionType.Outcome:
-                    _outcomeTransactionProvider.AddTransaction(transaction);
-                    break;
-                default:
-                    break;
-            }
+            _repo.AddTransaction(transaction);
         }
 
 

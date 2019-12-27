@@ -7,8 +7,8 @@ namespace FinanceManagerSDK.Repositories
     public interface ITransactionRepository
     {
         IEnumerable<Transaction> GetTransactions();
-
         void AddTransaction(Transaction tr);
+        void UpdateTransaction(Transaction tr);
     }
 
 }

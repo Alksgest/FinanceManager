@@ -5,8 +5,9 @@ namespace FinanceManagerSDK.Repositories
 {
     public interface IReasonRepository
     {
-        void AddReason(TransactionReason tr);
+        void AddReason(TransactionReason r);
         IEnumerable<TransactionReason> GetReasons();
-        void UpdateReason(TransactionReason tr);
+        void UpdateReason(TransactionReason r);
+        void RemoveReason(TransactionReason r);
     }
 }
