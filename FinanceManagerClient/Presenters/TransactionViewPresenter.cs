@@ -10,13 +10,13 @@ using FinanceManagerSDK.Models;
 
 namespace FinanceManagerClient.Presenters
 {
-    class ContributionToGluPresenter : Presenter<IGridView>
+    class TransactionViewPresenter : Presenter<IGridView>
     {
         public event EventHandler DataSourceUpdated;
 
         private readonly ITransactionManager _manager;
 
-        public ContributionToGluPresenter(IGridView view) : base(view)
+        public TransactionViewPresenter(IGridView view) : base(view)
         {
             _manager = new TransactionManager();
 

@@ -49,7 +49,7 @@ namespace FinanceManagerClient
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.AnnualFeeTabPage = new System.Windows.Forms.TabPage();
             this.ContributionTabPage = new System.Windows.Forms.TabPage();
-            this.contributionToGluUserControl1 = new FinanceManagerClient.Controls.ContributionToGluUserControl(this);
+            this.contributionToGluUserControl1 = new FinanceManagerClient.Controls.TransactionView(this);
             this.OtherIncomeTabPage = new System.Windows.Forms.TabPage();
             this.OtherOutcomeTabPage = new System.Windows.Forms.TabPage();
             this.BalanceTabPage = new System.Windows.Forms.TabPage();
@@ -315,7 +315,7 @@ namespace FinanceManagerClient
         private System.Windows.Forms.TabPage BalanceTabPage;
         private System.Windows.Forms.TabPage RegistryTabPage;
         private Controls.MainSettingsUserControl mainUserControl1;
-        private Controls.ContributionToGluUserControl contributionToGluUserControl1;
+        private Controls.TransactionView contributionToGluUserControl1;
         private System.Windows.Forms.ToolStripMenuItem addSearchCriteriaToolStripMenuItem;
     }
 }

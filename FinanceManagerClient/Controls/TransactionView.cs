@@ -14,24 +14,24 @@ using FinanceManagerSDK.Models;
 
 namespace FinanceManagerClient.Controls
 {
-    public partial class ContributionToGluUserControl : UserControl, IGridView
+    public partial class TransactionView : UserControl, IGridView
     {
         public event EventHandler Initialize;
         public event EventHandler RefreshDataSoruceOnFocus;
 
         public object TransactionsDataSource { get; set; }
 
-        private readonly ContributionToGluPresenter _presenter;
+        private readonly TransactionViewPresenter _presenter;
 
         private readonly Form _parent;
 
-        public ContributionToGluUserControl(Form parent)
+        public TransactionView(Form parent)
         {
             InitializeComponent();
 
             InvokeInitialize(EventArgs.Empty);
 
-            _presenter = new ContributionToGluPresenter(this);
+            _presenter = new TransactionViewPresenter(this);
             _presenter.DataSourceUpdated += OnDataSourceUpdated;
 
             _parent = parent;

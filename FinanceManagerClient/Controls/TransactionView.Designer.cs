@@ -1,6 +1,6 @@
 ﻿namespace FinanceManagerClient.Controls
 {
-    partial class ContributionToGluUserControl
+    partial class TransactionView
     {
         /// <summary> 
         /// Required designer variable.
