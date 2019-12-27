@@ -41,13 +41,26 @@ namespace FinanceManagerClient.Controls
                 var mainForm = (_parent as MainForm);
                 mainForm.TabIndexChanged += MainFormTabIndexChanged;
             }
+
             InitDataGridView();
+
+            this.MouseClick += ContributionToGluUserControlMouseClick;
+        }
+
+        private void ContributionToGluUserControlMouseClick(object sender, MouseEventArgs e)
+        {
+            ContributionDataGridView.ClearSelection();
         }
 
         private void InitDataGridView()
         {
             ContributionDataGridView.AutoGenerateColumns = false;
             ContributionDataGridView.DataError += ContributionDataGridViewDataError;
+            ContributionDataGridView.AllowUserToAddRows = false;
+            ContributionDataGridView.RowHeadersVisible = false;
+
+            ContributionDataGridView.AllowUserToResizeRows = false;
+            ContributionDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void MainFormTabIndexChanged(object sender, EventArgs e)
@@ -72,6 +85,8 @@ namespace FinanceManagerClient.Controls
                 AddItemsToDataTable(dt);
 
                 ContributionDataGridView.DataSource = dt;
+
+                ChangeEditMode(true);
             }
         }
 
@@ -117,6 +132,7 @@ namespace FinanceManagerClient.Controls
             currency.DataSource = currensies;
             currency.HeaderText = "Currency";
             currency.DataPropertyName = "Currency";
+            currency.SortMode = DataGridViewColumnSortMode.Automatic;
 
             DataGridViewTextBoxColumn date = new DataGridViewTextBoxColumn();
             date.HeaderText = "Date";
@@ -138,13 +154,14 @@ namespace FinanceManagerClient.Controls
 
         private void EditCheckBoxCheckedChanged(object sender, EventArgs e)
         {
-            ChangeEditMode(EditCheckBox.Checked);
+            ChangeEditMode(!EditCheckBox.Checked);
         }
 
-        private void ChangeEditMode(bool mode)
+        private void ChangeEditMode(bool isReadOnly)
         {
-            foreach (var c in ContributionDataGridView.Columns)
+            foreach (DataGridViewColumn c in ContributionDataGridView.Columns)
             {
+                c.ReadOnly = isReadOnly;
             }
         }
 
